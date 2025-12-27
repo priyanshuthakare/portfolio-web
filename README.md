@@ -76,28 +76,6 @@ It's not about being pretty. It's about being **BOLD**.
 └── README.md            # [FILE] You are here
 ```
 
----
-
-## /// DEPLOYMENT
-
-### OPTION A: LOCAL_HOST
-1.  Clone the repository.
-    ```bash
-    git clone https://github.com/Arham43-ops/NeoBrutalist.git
-    ```
-2.  Open `index.html` in your browser.
-    ```bash
-    # No build step required. It's raw HTML.
-    start index.html
-    ```
-
-### OPTION B: NETLIFY / VERCEL
-1.  Drag and drop the folder.
-2.  **Build Command**: `(empty)`
-3.  **Publish Directory**: `/`
-
----
-
 ## /// CONTACT_COORDINATES
 
 **TRANSMISSION OPEN:**
