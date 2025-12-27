@@ -408,67 +408,6 @@
         </div>
     </section>
 
-    <!-- GITHUB STATS SECTION -->
-    <section id="github" class="py-12 bg-neo-white border-y-4 border-black relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 relative z-10">
-            <div class="flex justify-between items-center mb-6 border-b-2 border-black pb-3">
-                <h2 class="text-4xl md:text-5xl font-black uppercase text-black tracking-tight">
-                    GitHub<span class="text-neo-green">_Stats</span>
-                </h2>
-                <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                    <p class="font-mono text-black text-xs font-bold">LIVE</p>
-                </div>
-            </div>
-
-            <!-- Compact Stats & Profile Info Row -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
-                <!-- Stats Cards -->
-                <div class="reveal bg-white border-2 border-black p-3 shadow-hard">
-                    <div class="font-mono text-[10px] text-gray-500 mb-1">REPOS</div>
-                    <div id="repos-count" class="text-2xl font-black text-neo-purple">--</div>
-                </div>
-                <div class="reveal bg-white border-2 border-black p-3 shadow-hard">
-                    <div class="font-mono text-[10px] text-gray-500 mb-1">FOLLOWERS</div>
-                    <div id="followers-count" class="text-2xl font-black text-neo-blue">--</div>
-                </div>
-
-                <!-- Profile Info Card -->
-                <div class="col-span-2 md:col-span-1 bg-neo-yellow border-2 border-black p-3">
-                    <div class="font-mono text-[10px] font-bold mb-1">MEMBER SINCE</div>
-                    <div id="created-at" class="font-mono text-xs font-bold">--</div>
-                </div>
-            </div>
-
-            <!-- Contribution Graph Below -->
-            <div class="reveal bg-white border-4 border-black p-4 shadow-hard-lg">
-                <div class="flex justify-between items-center mb-3 pb-2 border-b-2 border-dashed border-gray-300">
-                    <h3 class="text-lg font-black font-mono uppercase">Contributions</h3>
-                    <span class="font-mono text-xs text-gray-500" id="total-contributions">Loading...</span>
-                </div>
-
-                <!-- GitHub Contribution Embed -->
-                <div class="bg-black p-3 border-2 border-black overflow-x-auto">
-                    <img src="https://ghchart.rshah.org/33FF57/arham43-ops" alt="GitHub Contribution Graph"
-                        class="w-full h-auto" style="image-rendering: pixelated;" />
-                </div>
-
-                <!-- Profile Link -->
-                <div class="mt-3 flex items-center justify-between bg-black text-neo-green p-2 border-2 border-black">
-                    <span class="font-mono text-xs">
-                        <span class="text-neo-yellow">$</span> gh profile
-                    </span>
-                    <a href="https://github.com/arham43-ops" target="_blank"
-                        class="font-mono text-xs hover:text-white transition-colors">
-                        arham43-ops →
-                    </a>
-                </div>
-            </div>
-        </div>
-
-
-    </section>
-
     <section id="experience" class="py-24 px-4 max-w-7xl mx-auto">
         <h2 class="text-6xl md:text-8xl font-black uppercase mb-12 text-center">Experience<span
                 class="text-neo-red">_Log</span></h2>
@@ -557,6 +496,82 @@
                         <li>Creating reports and analytics for business intelligence.</li>
                     </ul>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GITHUB STATS SECTION -->
+    <section id="github" class="py-20 bg-neo-black text-white border-y-4 border-black relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20"
+            style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 40px 40px;">
+        </div>
+
+        <div class="max-w-[1400px] mx-auto px-4 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b-4 border-white pb-4">
+                <h2 class="text-6xl md:text-8xl font-black uppercase text-white tracking-tighter">
+                    GITHUB<span class="text-neo-green">_STATS</span>
+                </h2>
+                <div class="flex items-center gap-2 mb-2 md:mb-4">
+                    <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                    <p class="font-mono text-neo-green text-sm font-bold">/// LIVE_DATA</p>
+                </div>
+            </div>
+
+            <!-- Compact Stats & Profile Info Row -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                <!-- Stats Cards -->
+                <div
+                    class="reveal group w-full h-24 border-2 border-white/20 bg-neo-black hover:bg-white transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ REPOS</div>
+                    <div id="repos-count"
+                        class="text-white group-hover:text-black font-black font-display text-3xl uppercase">--</div>
+                </div>
+                <div
+                    class="reveal group w-full h-24 border-2 border-white/20 bg-neo-black hover:bg-neo-blue transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ FOLLOWERS
+                    </div>
+                    <div id="followers-count"
+                        class="text-white group-hover:text-black font-black font-display text-3xl uppercase">--</div>
+                </div>
+
+                <!-- Profile Info Card -->
+                <div
+                    class="col-span-2 md:col-span-1 group w-full h-24 border-2 border-white/20 bg-neo-black hover:bg-neo-yellow transition-all duration-0 hover:z-10 relative cursor-hover flex flex-col items-center justify-center p-2">
+                    <div class="text-neo-green group-hover:text-black font-mono text-xs mb-1 opacity-50">>_ SINCE</div>
+                    <div id="created-at"
+                        class="text-white group-hover:text-black font-black font-display text-xl uppercase">--</div>
+                </div>
+            </div>
+
+            <!-- Contribution Graph Below -->
+            <div class="reveal border-2 border-white/20 p-6">
+                <div class="flex justify-between items-center mb-4 pb-3 border-b-2 border-dashed border-white/20">
+                    <h3 class="text-xl font-black font-mono uppercase text-white">CONTRIBUTION_GRAPH</h3>
+                    <span class="font-mono text-sm text-gray-400" id="total-contributions">Loading...</span>
+                </div>
+
+                <!-- GitHub Contribution Embed -->
+                <div class="bg-black p-4 border-2 border-white/20 overflow-x-auto">
+                    <img src="https://ghchart.rshah.org/33FF57/arham43-ops" alt="GitHub Contribution Graph"
+                        class="w-full h-auto" style="image-rendering: pixelated;" />
+                </div>
+
+                <!-- Profile Link -->
+                <div
+                    class="mt-4 flex items-center justify-between bg-black text-neo-green p-3 border-2 border-white/20">
+                    <span class="font-mono text-sm">
+                        <span class="text-neo-yellow">$</span> gh profile --user
+                    </span>
+                    <a href="https://github.com/arham43-ops" target="_blank"
+                        class="font-mono text-sm hover:text-white transition-colors">
+                        arham43-ops →
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t-4 border-white mt-8 pt-4 flex justify-between font-mono text-xs text-gray-500">
+                <span>API_STATUS: ACTIVE</span>
+                <span>LAST_UPDATED: REALTIME</span>
             </div>
         </div>
     </section>
