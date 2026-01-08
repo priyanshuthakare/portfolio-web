@@ -36,6 +36,7 @@ It's not about being pretty. It's about being **BOLD**.
 | **CORE** | `HTML5` | [OPTIMIZED] |
 | **STYLING** | `TailwindCSS` | [LOADED] |
 | **SCRIPTING** | `Vanilla JS` | [ACTIVE] |
+| **APIs** | `GitHub API` + `LeetCard` | [STREAMING] |
 | **ICONS** | `Remix Icons` | [LINKED] |
 | **FONTS** | `Space Grotesk` + `JetBrains Mono` | [IMPORTED] |
 
@@ -62,6 +63,13 @@ It's not about being pretty. It's about being **BOLD**.
 > Elements reveal themselves as you scroll.
 > - `IntersectionObserver` API.
 > - Smooth translate-Y transitions.
+
+### 05. CODING_STATS_INTEGRATION
+> Real-time data visualization of development activity.
+> - **Dual-Profile Interface**: Side-by-side GitHub and LeetCode stats.
+> - **Live GitHub API**: Dynamic fetching of Repos, Followers, and Commits.
+> - **LeetCard Integration**: Real-time LeetCode problem-solving heatmap.
+> - **Parallel Layout**: Perfectly balanced columns with mirrored headers and activity matrices.
 
 ---
 
