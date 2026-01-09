@@ -72,12 +72,16 @@
         /* Animations */
         .marquee-container {
             overflow: hidden;
-            white-space: nowrap;
         }
 
         .marquee-content {
-            display: inline-block;
-            animation: scroll 20s linear infinite;
+            display: flex;
+            animation: scroll 40s linear infinite;
+            width: max-content;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
         }
 
         .marquee-content-reverse {
@@ -806,49 +810,209 @@
         </div>
     </section>
 
-    <section class="py-24 px-4 bg-neo-black border-t-4 border-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex items-center gap-4 mb-12">
-                <div class="h-4 w-4 bg-red-500 rounded-full border border-black"></div>
-                <div class="h-4 w-4 bg-yellow-500 rounded-full border border-black"></div>
-                <div class="h-4 w-4 bg-green-500 rounded-full border border-black"></div>
-                <h2 class="font-mono text-white text-2xl font-bold ml-4">USER_REPORTS.txt</h2>
+    <section id="reports" class="py-24 bg-neo-black border-t-4 border-black overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4">
+            <div
+                class="flex items-center gap-2 mb-16 bg-white/5 border-2 border-white/10 p-4 inline-flex shadow-hard shadow-neo-blue/20">
+                <div class="flex gap-2">
+                    <div class="h-3 w-3 bg-red-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-yellow-500 rounded-full border border-black"></div>
+                    <div class="h-3 w-3 bg-green-500 rounded-full border border-black"></div>
+                </div>
+                <h2 class="font-mono text-white text-xl font-bold ml-4 tracking-tighter">USER_REPORTS.txt</h2>
+                <div class="ml-8 px-2 bg-neo-blue text-black text-[10px] font-black uppercase">LIVE_FEED</div>
             </div>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="marquee-container group cursor-hover">
+            <div class="marquee-content flex gap-8 py-12 px-4 select-none">
+                <!-- Original Set -->
                 <div
-                    class="reveal bg-neo-green border-4 border-black p-6 shadow-hard -rotate-1 hover:rotate-0 transition-transform md:translate-y-12">
-                    <div class="font-mono text-white text-sm mb-4 border-b-2 border-black pb-2">FROM: Student @ L J
-                        university
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">REPORT_001.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
                     </div>
-                    <p class="font-bold text-lg leading-tight mb-4">"Arham didn't just build a website, he built a war
-                        machine. Our conversions tripled in a week."</p>
-                    <div class="flex text-yellow-300 gap-1">
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Student @ L J
+                        University</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Arham Proved no matter how pressure or
+                        less time is he makes projects complete outstandingly"</p>
+                    <div class="flex text-neo-green/60 gap-1 text-lg">
                         <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
                             class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
                 </div>
 
                 <div
-                    class="reveal bg-neo-blue border-4 border-black p-6 shadow-hard -rotate-1 hover:rotate-0 transition-transform md:translate-y-12">
-                    <div class="font-mono text-black text-sm mb-4 border-b-2 border-black pb-2">FROM: CEO @ Alpha
-                        Consultancy
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">REPORT_002.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
                     </div>
-                    <p class="font-bold text-lg leading-tight mb-4">"Fast, reliable, and actually has good taste in
-                        design. A rare combination."</p>
-                    <div class="flex text-black gap-1">
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: CEO @ Alpha
+                        Consultancy</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Fast, reliable, and actually has good
+                        taste in design. A rare combination."</p>
+                    <div class="flex text-neo-blue/60 gap-1 text-lg">
                         <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
                             class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
                 </div>
 
                 <div
-                    class="reveal bg-neo-pink border-4 border-black p-6 shadow-hard -rotate-1 hover:rotate-0 transition-transform md:translate-y-12">
-                    <div class="font-mono text-black text-sm mb-4 border-b-2 border-black pb-2">FROM: Student @ L J
-                        university</div>
-                    <p class="font-bold text-lg leading-tight mb-4">"Cleanest code I've seen in years. He knows how to
-                        handle complex state management."</p>
-                    <div class="flex text-white gap-1">
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-pink/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-pink"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-pink text-xs font-bold tracking-widest uppercase">REPORT_003.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Student @ L J
+                        University</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Cleanest code I've seen in years. He
+                        knows how to handle complex state management."</p>
+                    <div class="flex text-neo-pink/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-purple/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-purple"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-purple text-xs font-bold tracking-widest uppercase">
+                            REPORT_004.log</div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Dev @
+                        CreativeChaos</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Creative designing idea and provided a
+                        Unique UI experience."</p>
+                    <div class="flex text-neo-purple/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-orange/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-orange"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-orange text-xs font-bold tracking-widest uppercase">
+                            REPORT_005.log</div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: UX Designer @
+                        TechFlow</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Highly intuitive UX. Delivered exactly
+                        what we needed before we even knew we needed it."</p>
+                    <div class="flex text-neo-orange/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Loop -->
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-green/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-green"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-green text-xs font-bold tracking-widest uppercase">REPORT_001.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Student @ L J
+                        University</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Arham didn't just build a website, he
+                        built a war machine. Our conversions tripled in a week."</p>
+                    <div class="flex text-neo-green/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-blue/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-blue"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-blue text-xs font-bold tracking-widest uppercase">REPORT_002.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: CEO @ Alpha
+                        Consultancy</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Fast, reliable, and actually has good
+                        taste in design. A rare combination."</p>
+                    <div class="flex text-neo-blue/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-pink/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-pink"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-pink text-xs font-bold tracking-widest uppercase">REPORT_003.log
+                        </div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Student @ L J
+                        University</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Cleanest code I've seen in years. He
+                        knows how to handle complex state management."</p>
+                    <div class="flex text-neo-pink/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-purple/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-purple"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-purple text-xs font-bold tracking-widest uppercase">
+                            REPORT_004.log</div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: Dev @
+                        CreativeChaos</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"The attention to detail in the
+                        NeoBrutalist implementation is flawless. A master of his craft."</p>
+                    <div class="flex text-neo-purple/60 gap-1 text-lg">
+                        <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
+                            class="ri-star-fill"></i><i class="ri-star-fill"></i>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-shrink-0 w-[450px] bg-neo-black border-4 border-white/10 p-8 shadow-hard hover:border-neo-orange/50 hover:-translate-y-2 transition-all duration-500 relative group/card overflow-hidden text-left whitespace-normal">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-neo-orange"></div>
+                    <div class="absolute -top-4 -right-4 w-12 h-12 bg-white/5 rotate-45"></div>
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="font-mono text-neo-orange text-xs font-bold tracking-widest uppercase">
+                            REPORT_005.log</div>
+                        <div class="text-[10px] font-mono text-gray-500">2025.txt</div>
+                    </div>
+                    <div class="font-mono text-gray-400 text-[10px] mb-2 uppercase tracking-tight">FROM: UX Designer @
+                        TechFlow</div>
+                    <p class="font-bold text-xl leading-snug mb-6 text-white/90">"Highly intuitive UX. Delivered exactly
+                        what we needed before we even knew we needed it."</p>
+                    <div class="flex text-neo-orange/60 gap-1 text-lg">
                         <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i
                             class="ri-star-fill"></i><i class="ri-star-fill"></i>
                     </div>
