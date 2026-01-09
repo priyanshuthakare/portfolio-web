@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://arham-portfolio-v2.netlify.app/sitemap.xml
