@@ -1,0 +1,23 @@
+# System Files
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project Specific
+.gemini/
+node_modules/
+.env
+.env.local
+.dist/
+build/
+
+# SEO & Search Console
+sitemap.xml
+robots.txt
+google*.html
