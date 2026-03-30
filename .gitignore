@@ -16,6 +16,11 @@ node_modules/
 .env.local
 .dist/
 build/
+dist/
+
+# Vite
+.vite/
+*.local
 
 # SEO & Search Console
 sitemap.xml
