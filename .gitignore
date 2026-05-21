@@ -23,6 +23,5 @@ dist/
 *.local
 
 # SEO & Search Console
-sitemap.xml
-robots.txt
+
 google*.html
