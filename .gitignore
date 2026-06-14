@@ -1,27 +1,45 @@
-# System Files
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+coverage
+
+# next.js
+.next/
+out/
+
+# production
+build
+
+# misc
 .DS_Store
-Thumbs.db
-*.log
+.eslintcache
+*.pem
 
-# IDE & Editor Files
-.vscode/
-.idea/
-*.swp
-*.swo
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Project Specific
-.gemini/
-node_modules/
-.env
-.env.local
-.dist/
-build/
-dist/
+# env files (can opt-in for committing if needed)
+.env*
 
-# Vite
-.vite/
-*.local
+# vercel
+.vercel
 
-# SEO & Search Console
+# typescript
+*.tsbuildinfo
+next-env.d.ts
 
-google*.html
+# ncdai
+.ncdai
