@@ -14,8 +14,8 @@ import {
   ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
-import { getWordmarkSVG } from "./chanhdai-wordmark"
+import { PriyanshuMark, getMarkSVG } from "./priyanshu-mark"
+import { getWordmarkSVG } from "./priyanshu-wordmark"
 
 export function BrandContextMenu({ children }: { children: React.ReactNode }) {
   const { success } = useTiks()
@@ -32,7 +32,7 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
             success()
           }}
         >
-          <ChanhDaiMark />
+          <PriyanshuMark />
           Copy Mark as SVG
         </ContextMenuItem>
 
@@ -50,14 +50,14 @@ export function BrandContextMenu({ children }: { children: React.ReactNode }) {
         <ContextMenuSeparator />
 
         <ContextMenuItem asChild>
-          <Link href="/blog/chanhdai-brand">
+          <Link href="/blog/priyanshu-brand">
             <SquareDashed />
             Brand Guidelines
           </Link>
         </ContextMenuItem>
 
         <ContextMenuItem asChild>
-          <a href="https://assets.chanhdai.com/chanhdai-brand.zip" download>
+          <a href="https://assets.chanhdai.com/priyanshu-brand.zip" download>
             <Download />
             Download Brand Assets
           </a>

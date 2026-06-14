@@ -21,7 +21,6 @@ import {
 } from "@/components/base/ui/tooltip"
 import { CodeCollapsibleWrapper } from "@/components/code-collapsible-wrapper"
 import { OpenInV0Button } from "@/components/v0-open-button"
-import { Index } from "@/registry/__index__"
 
 export function ComponentPreview({
   className,
@@ -51,18 +50,12 @@ export function ComponentPreview({
   const Code = Codes[0]
 
   const Preview = useMemo(() => {
-    const Component = Index[name]?.component
-
-    if (!Component) {
-      return (
-        <p className="text-sm text-muted-foreground">
-          Component <CodeInline>{name}</CodeInline> not found in registry.
-        </p>
-      )
-    }
-
-    return <Component />
-  }, [name])
+    return children || (
+      <p className="text-sm text-muted-foreground">
+        Component <CodeInline>{name}</CodeInline> not found in registry.
+      </p>
+    )
+  }, [name, children])
 
   return (
     <div

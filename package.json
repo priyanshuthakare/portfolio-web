@@ -1,37 +1,37 @@
 {
-  "name": "chanhdai.com",
+  "name": "priyanshuthakare.github.io",
   "version": "0.1.0",
   "description": "A pixel-perfect dev portfolio and shadcn registry.",
-  "homepage": "https://chanhdai.com",
+  "homepage": "https://0xpriyanshu.is-a.dev",
   "license": "MIT",
   "author": {
     "name": "Nguyen Chanh Dai",
-    "email": "dai@chanhdai.com",
-    "url": "https://github.com/ncdai"
+    "email": "priyanshuthakare@example.com",
+    "url": "https://github.com/priyanshuthakare"
   },
   "contributors": [
     {
       "name": "Nguyen Chanh Dai",
-      "email": "dai@chanhdai.com",
-      "url": "https://github.com/ncdai"
+      "email": "priyanshuthakare@example.com",
+      "url": "https://github.com/priyanshuthakare"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ncdai/chanhdai.com.git"
+    "url": "git+https://github.com/priyanshuthakare/priyanshuthakare.github.io.git"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "pnpm registry:build && next build",
+    "build": "next build",
     "start": "next start",
-    "preview": "pnpm registry:build && next build && next start",
+    "preview": "next build && next start",
     "lint": "eslint . --cache --cache-location .eslintcache",
     "lint:fix": "eslint --fix . --cache --cache-location .eslintcache",
     "check-types": "tsc --noEmit --pretty",
     "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx}\" --cache",
     "format:write": "prettier --write \"**/*.{ts,tsx,md,mdx}\" --cache",
-    "registry:build": "bun run ./src/scripts/build-registry.mts && shadcn build",
-    "registry:validate": "shadcn registry validate ./public/r/registry.json",
+    "registry:build": "echo registry removed",
+    "registry:validate": "echo registry removed",
     "capture": "bun run ./src/scripts/capture.mts",
     "icons:dev": "bun run ./src/scripts/build-icons.ts --watch",
     "icons:build": "bun run ./src/scripts/build-icons.ts",
@@ -48,7 +48,6 @@
     "@hookform/resolvers": "^4.1.0",
     "@hugeicons/core-free-icons": "^4.1.1",
     "@hugeicons/react": "^1.1.6",
-    "@ncdai/react-wheel-picker": "^1.2.0",
     "@number-flow/react": "^0.6.0",
     "@openpanel/web": "^1.2.0",
     "@phosphor-icons/react": "^2.1.10",
@@ -145,7 +144,7 @@
   },
   "engines": {
     "node": ">=22.x",
-    "pnpm": ">=9"
+    "pnpm": ">=8"
   },
-  "packageManager": "pnpm@11.5.3"
+  "packageManager": "pnpm@9.15.9"
 }

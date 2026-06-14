@@ -9,7 +9,7 @@ import { Awards } from "@/features/portfolio/components/awards"
 import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Certifications } from "@/features/portfolio/components/certifications"
-import { Components } from "@/features/portfolio/components/components"
+
 import { Experiences } from "@/features/portfolio/components/experiences"
 import {
   Insights,
@@ -46,9 +46,6 @@ export default function HomePage() {
           <Separator />
 
           <TechStack />
-          <Separator />
-
-          <Components />
           <Separator />
 
           <Blog />

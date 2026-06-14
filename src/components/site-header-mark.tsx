@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useMotionValueEvent, useScroll } from "motion/react"
 
-import { ChanhDaiMark } from "./chanhdai-mark"
+import { PriyanshuMark } from "./priyanshu-mark"
 
 const calcDistance = (el: HTMLElement) => {
   const rect = el.getBoundingClientRect()
@@ -13,7 +13,7 @@ const calcDistance = (el: HTMLElement) => {
   return scrollTop + rect.top + rect.height - headerHeight
 }
 
-function ChanhDaiMarkMotion() {
+function PriyanshuMarkMotion() {
   const { scrollY } = useScroll()
   const [visible, setVisible] = useState(false)
   const distanceRef = useRef(160)
@@ -40,7 +40,7 @@ function ChanhDaiMarkMotion() {
 
   return (
     <div data-visible={visible} className="group/mark-motion flex">
-      <ChanhDaiMark className="-translate-y-1 opacity-0 transition-[opacity,translate] duration-300 group-data-[visible=true]/mark-motion:translate-y-0 group-data-[visible=true]/mark-motion:opacity-100" />
+      <PriyanshuMark className="-translate-y-1 opacity-0 transition-[opacity,translate] duration-300 group-data-[visible=true]/mark-motion:translate-y-0 group-data-[visible=true]/mark-motion:opacity-100" />
     </div>
   )
 }
@@ -48,5 +48,5 @@ function ChanhDaiMarkMotion() {
 export function SiteHeaderMark() {
   const pathname = usePathname()
   const isHome = ["/", "/index"].includes(pathname)
-  return isHome ? <ChanhDaiMarkMotion /> : <ChanhDaiMark />
+  return isHome ? <PriyanshuMarkMotion /> : <PriyanshuMark />
 }

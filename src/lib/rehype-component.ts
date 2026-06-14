@@ -4,26 +4,22 @@ import { u } from "unist-builder"
 import { visit } from "unist-util-visit"
 
 import type { UnistNode, UnistTree } from "@/types/unist"
-import { Index } from "@/registry/__index__"
 
 import { formatCode } from "./format-code"
-import { fixImport } from "./registry"
 
 type NodeToProcess = {
   node: UnistNode
-  type: "ComponentSource" | "ComponentPreview"
+  type: "ComponentSource"
   name: string
   fileName?: string
   srcPath?: string
 }
 
 export function rehypeComponent() {
-  // Thanks @shadcn/ui
   return async (tree: UnistTree) => {
     const nodesToProcess: NodeToProcess[] = []
 
     visit(tree, (node: UnistNode) => {
-      // src prop overrides both name and fileName.
       const { value: srcPath } =
         (getNodeAttributeByName(node, "src") as {
           name: string
@@ -47,18 +43,6 @@ export function rehypeComponent() {
           })
         }
       }
-
-      if (node.name === "ComponentPreview") {
-        const name = getNodeAttributeByName(node, "name")?.value as string
-
-        if (name) {
-          nodesToProcess.push({
-            node,
-            type: "ComponentPreview",
-            name,
-          })
-        }
-      }
     })
 
     await Promise.all(
@@ -73,21 +57,16 @@ export function rehypeComponent() {
                 item.srcPath
               )
             } else {
-              const component = Index[item.name]
-              src = item.fileName
-                ? component.files.find((file: unknown) => {
-                    if (typeof file === "string") {
-                      return (
-                        file.endsWith(`${item.fileName}.tsx`) ||
-                        file.endsWith(`${item.fileName}.ts`)
-                      )
-                    }
-                    return false
-                  }) || component.files[0]?.path
-                : component.files[0]?.path
+              src = path.join(
+                /*turbopackIgnore: true*/ process.cwd(),
+                "src",
+                "registry",
+                "components",
+                item.name,
+                `${item.fileName || item.name}.tsx`
+              )
             }
 
-            // Read the source file.
             const filePath = src
             const raw = fs.readFileSync(
               /*turbopackIgnore: true*/ filePath,
@@ -102,7 +81,6 @@ export function rehypeComponent() {
             )
             const codeMeta = getNodeAttributeByName(item.node, "data-code-meta")
 
-            // Add code as children so that rehype can take over at build time.
             item.node.children?.push(
               u("element", {
                 tagName: "pre",
@@ -122,51 +100,6 @@ export function rehypeComponent() {
                       ]
                         .concat(codeMeta ? [codeMeta.value as string] : [])
                         .join(" "),
-                    },
-                    children: [
-                      {
-                        type: "text",
-                        value: source,
-                      },
-                    ],
-                  }),
-                ],
-              })
-            )
-          } catch (error) {
-            console.error(error)
-          }
-        }
-
-        if (item.type === "ComponentPreview") {
-          try {
-            const component = Index[item.name]
-
-            const src = component.files[0]?.path
-
-            // Read the source file.
-            const filePath = src
-            const raw = fs.readFileSync(
-              /*turbopackIgnore: true*/ filePath,
-              "utf8"
-            )
-            const source = fixImport(raw) // await formatCode(raw, "radix-vega")
-
-            const codeMeta = getNodeAttributeByName(item.node, "data-code-meta")
-
-            // Add code as children so that rehype can take over at build time.
-            item.node.children?.push(
-              u("element", {
-                tagName: "pre",
-                properties: {},
-                children: [
-                  u("element", {
-                    tagName: "code",
-                    properties: {
-                      className: ["language-tsx"],
-                    },
-                    data: {
-                      meta: codeMeta?.value ?? "",
                     },
                     children: [
                       {
