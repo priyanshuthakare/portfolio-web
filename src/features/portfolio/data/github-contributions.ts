@@ -11,11 +11,16 @@ type GitHubContributionsResponse = {
 
 export const getGitHubContributions = unstable_cache(
   async () => {
-    const res = await fetch(
-      `${process.env.GITHUB_CONTRIBUTIONS_API_URL || "https://github-contributions-api.jogruber.de"}/v4/${GITHUB_USERNAME}?y=last`
-    )
-    const data = (await res.json()) as GitHubContributionsResponse
-    return data.contributions
+    try {
+      const res = await fetch(
+        `${process.env.GITHUB_CONTRIBUTIONS_API_URL || "https://github-contributions-api.jogruber.de"}/v4/${GITHUB_USERNAME}?y=last`,
+        { signal: AbortSignal.timeout(5000) }
+      )
+      const data = (await res.json()) as GitHubContributionsResponse
+      return data.contributions
+    } catch {
+      return []
+    }
   },
   ["github-contributions"],
   { revalidate: 86400 } // Cache for 1 day (86400 seconds)
