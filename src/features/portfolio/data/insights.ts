@@ -29,6 +29,7 @@ export const getInsights = unstable_cache(
       const res = await fetch(
         `https://api.openpanel.dev/insights/${process.env.OPENPANEL_PROJECT_ID}/overview`,
         {
+          signal: AbortSignal.timeout(5000),
           headers: {
             "openpanel-client-id": process.env.OPENPANEL_CLIENT_ID!,
             "openpanel-client-secret": process.env.OPENPANEL_CLIENT_SECRET!,
