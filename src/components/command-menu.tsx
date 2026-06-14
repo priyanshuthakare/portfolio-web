@@ -42,13 +42,13 @@ import {
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
 
-import { ChanhDaiMark, getMarkSVG } from "./chanhdai-mark"
-import { getWordmarkSVG } from "./chanhdai-wordmark"
-import { ComponentIcon, Icons } from "./icons"
+import { PriyanshuMark, getMarkSVG } from "./priyanshu-mark"
+import { getWordmarkSVG } from "./priyanshu-wordmark"
+import { Icons } from "./icons"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
 
-type CommandKind = "command" | "page" | "link" | "component" | "block"
+type CommandKind = "command" | "page" | "link"
 
 type CommandLinkItem = {
   title: string
@@ -61,33 +61,13 @@ type CommandLinkItem = {
   openInNewTab?: boolean
 }
 
-type BlockItem = {
-  name: string
-  description: string
-  categories: string[]
-}
-
 const MENU_LINKS: CommandLinkItem[] = [
   {
     title: "Home",
     href: "/",
     kind: "page",
-    icon: <ChanhDaiMark />,
+    icon: <PriyanshuMark />,
     shortcut: "GH",
-  },
-  {
-    title: "Components",
-    href: "/components",
-    kind: "page",
-    icon: <Icons.react />,
-    shortcut: "GC",
-  },
-  {
-    title: "Blocks",
-    href: "/blocks",
-    kind: "page",
-    icon: <Icons.gridView />,
-    shortcut: "GB",
   },
   {
     title: "Blog",
@@ -190,11 +170,9 @@ const OTHER_LINK_ITEMS: CommandLinkItem[] = [
 
 export function CommandMenu({
   docs,
-  blocks,
   enabledHotkeys = false,
 }: {
   docs: DocPreview[]
-  blocks: BlockItem[]
   enabledHotkeys?: boolean
 }) {
   const router = useRouter()
@@ -287,87 +265,14 @@ export function CommandMenu({
     [click, setTheme]
   )
 
-  const components = useMemo(
-    () =>
-      docs
-        .filter((doc) => doc.category === "components")
-        .sort((a, b) =>
-          a.title.localeCompare(b.title, "en", {
-            sensitivity: "base",
-          })
-        ),
-    [docs]
-  )
-
-  const componentsGroup = useMemo(() => {
-    if (!components || components.length === 0) {
-      return null
-    }
-
-    return (
-      <CommandGroup heading="Components">
-        {components.map((component) => {
-          return (
-            <CommandMenuItem
-              key={component.slug}
-              keywords={["component"]}
-              onHighlight={() => {
-                setSelectedCommandKind("component")
-              }}
-              onSelect={() => {
-                handleOpenLink(`/components/${component.slug}`)
-              }}
-            >
-              <ComponentIcon variant={component.slug} />
-              <p className="line-clamp-1">{component.title}</p>
-            </CommandMenuItem>
-          )
-        })}
-      </CommandGroup>
-    )
-  }, [components, handleOpenLink])
-
-  const blocksGroup = useMemo(() => {
-    if (!blocks || blocks.length === 0) {
-      return null
-    }
-
-    return (
-      <CommandGroup heading="Blocks">
-        {blocks.map((block) => {
-          return (
-            <CommandMenuItem
-              key={block.name}
-              keywords={["block"]}
-              onHighlight={() => {
-                setSelectedCommandKind("block")
-              }}
-              onSelect={() => {
-                handleOpenLink(`/blocks/${block.categories[0]}/${block.name}`)
-              }}
-            >
-              <Icons.gridView />
-              <p className="line-clamp-1">{block.description}</p>
-              <span className="ml-auto font-mono text-xs font-normal text-muted-foreground tabular-nums max-sm:hidden">
-                {block.name}
-              </span>
-            </CommandMenuItem>
-          )
-        })}
-      </CommandGroup>
-    )
-  }, [blocks, handleOpenLink])
-
   const blogLinks = useMemo(
     () =>
-      docs
-        .filter((doc) => doc.category !== "components")
-        .map<CommandLinkItem>((doc) => ({
-          title: doc.title,
-          href: `/blog/${doc.slug}`,
-          kind: "page",
-          keywords: ["blog"],
-        })),
+      docs.map<CommandLinkItem>((doc) => ({
+        title: doc.title,
+        href: `/blog/${doc.slug}`,
+        kind: "page",
+        keywords: ["blog"],
+      })),
     [docs]
   )
 
@@ -414,10 +319,6 @@ export function CommandMenu({
               onLinkSelect={handleOpenLink}
             />
 
-            {componentsGroup}
-
-            {blocksGroup}
-
             <CommandLinkGroup
               heading="Blog"
               links={blogLinks}
@@ -440,7 +341,7 @@ export function CommandMenu({
                   handleCopyText(getMarkSVG(), "Mark as SVG copied")
                 }}
               >
-                <ChanhDaiMark />
+                <PriyanshuMark />
                 Copy Mark as SVG
               </CommandMenuItem>
 
@@ -458,7 +359,7 @@ export function CommandMenu({
                 onHighlight={() => {
                   setSelectedCommandKind("link")
                 }}
-                onSelect={() => handleOpenLink("/blog/chanhdai-brand")}
+                onSelect={() => handleOpenLink("/blog/priyanshu-brand")}
               >
                 <SquareDashedIcon />
                 Brand Guidelines
@@ -466,7 +367,7 @@ export function CommandMenu({
 
               <CommandMenuItem onHighlight={handleCommandHighlight} asChild>
                 <a
-                  href="https://assets.chanhdai.com/chanhdai-brand.zip"
+                  href="https://assets.chanhdai.com/priyanshu-brand.zip"
                   download
                 >
                   <DownloadIcon />
@@ -656,8 +557,6 @@ const ENTER_ACTION_LABELS: Record<CommandKind, string> = {
   command: "Run Command",
   page: "Go to Page",
   link: "Open Link",
-  component: "Go to Component",
-  block: "Go to Block",
 }
 
 function CommandMenuFooter({
@@ -670,7 +569,7 @@ function CommandMenuFooter({
       <div className="flex h-10" />
 
       <div className="absolute inset-x-0 bottom-0 flex h-10 items-center justify-between gap-2 rounded-b-2xl px-4 text-xs font-medium">
-        <ChanhDaiMark className="size-6 text-muted-foreground" />
+        <PriyanshuMark className="size-6 text-muted-foreground" />
 
         <div className="flex items-center gap-2 max-sm:hidden">
           <span>{ENTER_ACTION_LABELS[selectedCommandKind ?? "page"]}</span>

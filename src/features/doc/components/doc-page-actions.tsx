@@ -87,23 +87,14 @@ export function LLMCopyButton({ markdownUrl }: { markdownUrl: string }) {
   )
 }
 
-function getPrompt(url: string, isComponent?: boolean) {
-  if (isComponent) {
-    return `I'm looking at this component documentation: ${url}
-I want to use it in a React (TypeScript) project.
-Help me understand how to use it step-by-step, including explaining key concepts, showing practical examples with TypeScript code, and pointing out common pitfalls.
-Be ready to answer follow-up questions and help debug issues based on the documentation.`
-  }
-
+function getPrompt(url: string) {
   return `Read ${url}, I want to ask questions about it.`
 }
 
 export function ViewOptions({
   markdownUrl,
-  isComponent = false,
 }: {
   markdownUrl: string
-  isComponent?: boolean
 }) {
   const items = useMemo(() => {
     const fullMarkdownUrl =
@@ -111,9 +102,9 @@ export function ViewOptions({
         ? new URL(markdownUrl, window.location.origin).toString()
         : markdownUrl
 
-    const q = getPrompt(fullMarkdownUrl, isComponent)
+    const q = getPrompt(fullMarkdownUrl)
 
-    const _items = [
+    return [
       {
         title: "View as Markdown",
         href: fullMarkdownUrl,
@@ -121,7 +112,7 @@ export function ViewOptions({
       },
       {
         title: "Open in GitHub",
-        href: `https://github.com/ncdai/chanhdai.com/blob/main/src/features/doc/content/${markdownUrl.split("/").slice(-1).join("/")}`,
+        href: `https://github.com/priyanshuthakare/priyanshuthakare.github.io/blob/main/src/features/doc/content/${markdownUrl.split("/").slice(-1).join("/")}`,
         icon: Icons.github,
       },
       {
@@ -161,19 +152,7 @@ export function ViewOptions({
         icon: Icons.scira,
       },
     ]
-
-    if (isComponent) {
-      _items.splice(2, 0, {
-        title: "Open in v0",
-        href: `https://v0.app/?${new URLSearchParams({
-          q,
-        })}`,
-        icon: Icons.v0,
-      })
-    }
-
-    return _items
-  }, [markdownUrl, isComponent])
+  }, [markdownUrl])
 
   return (
     <DropdownMenu>
@@ -210,16 +189,14 @@ export function ViewOptions({
 
 export function LLMCopyButtonWithViewOptions({
   markdownUrl,
-  isComponent = false,
 }: {
   markdownUrl: string
-  isComponent?: boolean
 }) {
   return (
     <ButtonGroup>
       <LLMCopyButton markdownUrl={markdownUrl} />
       <ButtonGroupSeparator className="border-y-4 border-secondary dark:bg-white/20 data-vertical:my-0" />
-      <ViewOptions markdownUrl={markdownUrl} isComponent={isComponent} />
+      <ViewOptions markdownUrl={markdownUrl} />
     </ButtonGroup>
   )
 }

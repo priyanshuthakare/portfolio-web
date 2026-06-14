@@ -1,4 +1,4 @@
-# AI Agent Guidelines for chanhdai.com
+# AI Agent Guidelines for priyanshuthakare.github.io
 
 Next.js 16 (App Router) portfolio, blog, and shadcn registry website.
 

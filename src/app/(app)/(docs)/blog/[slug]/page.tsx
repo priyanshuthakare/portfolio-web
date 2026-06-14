@@ -166,7 +166,6 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
             <div className="flex items-center gap-2">
               <LLMCopyButtonWithViewOptions
                 markdownUrl={`${getDocUrl(doc)}.mdx`}
-                isComponent={doc.metadata.category === "components"}
               />
 
               <DocShareMenu title={doc.metadata.title} url={getDocUrl(doc)} />
@@ -276,6 +275,5 @@ export default async function Page({ params }: PageProps<"/blog/[slug]">) {
 }
 
 function getDocUrl(doc: Doc) {
-  const isComponent = doc.metadata.category === "components"
-  return isComponent ? `/components/${doc.slug}` : `/blog/${doc.slug}`
+  return `/blog/${doc.slug}`
 }

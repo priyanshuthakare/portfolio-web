@@ -66,6 +66,22 @@ export const Icons = {
       />
     </svg>
   ),
+  nextjs: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M18.665 21.978C16.758 23.255 14.465 24 12 24 5.377 24 0 18.623 0 12S5.377 0 12 0s12 5.377 12 12c0 3.583-1.574 6.801-4.067 9.001L9.219 7.2H7.2v9.596h1.998V9.251l5.8 7.807a9.872 9.872 0 0 0 .109-.02l3.558-7.986H14.21v1.593h2.964l-2.79 6.257a10.15 10.15 0 0 1-.494.666 12.068 12.068 0 0 0 4.776-2.18V21.98h-.001Z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
+  nodejs: (props: IconProps) => (
+    <svg viewBox="0 0 24 24" aria-hidden {...props}>
+      <path
+        d="M11.998,24c-0.321,0-0.641-0.084-0.922-0.247l-2.936-1.737c-0.438-0.245-0.224-0.332-0.08-0.383 c0.585-0.203,0.703-0.25,1.328-0.604c0.065-0.037,0.151-0.023,0.218,0.017l2.256,1.339c0.082,0.045,0.197,0.045,0.272,0l8.795-5.076 c0.082-0.047,0.134-0.141,0.134-0.239v-10.14c0-0.1-0.052-0.194-0.134-0.242l-8.795-5.072c-0.082-0.047-0.19-0.047-0.272,0 L3.075,5.969C2.99,6.017,2.94,6.11,2.94,6.208v10.14c0,0.099,0.052,0.194,0.134,0.238l2.41,1.392c1.307,0.654,2.108-0.116,2.108-0.891 V7.395c0-0.144,0.114-0.255,0.26-0.255h1.114c0.143,0,0.26,0.113,0.26,0.255v9.694c0,1.744-0.95,2.741-2.603,2.741 c-0.508,0-0.909,0-2.026-0.551L2.72,18.542c-0.571-0.329-0.922-0.947-0.922-1.604V6.208c0-0.658,0.353-1.275,0.922-1.603 l8.795-5.082c0.557-0.315,1.296-0.315,1.848,0l8.795,5.082c0.569,0.329,0.922,0.947,0.922,1.603v10.141 c0,0.658-0.353,1.273-0.922,1.604l-8.795,5.078C12.64,23.916,12.32,24,11.998,24z M15.354,16.688c-2.086,0-2.528-0.959-2.528-1.76 c0-0.142,0.116-0.255,0.26-0.255h1.134c0.128,0,0.237,0.093,0.255,0.219c0.174,0.779,0.487,1.113,1.22,1.113 c0.846,0,1.254-0.471,1.254-1.037c0-0.756-0.42-1.081-1.591-1.346c-1.591-0.365-2.588-0.982-2.588-2.276 c0-1.022,0.762-2.285,2.667-2.285c1.872,0,2.607,0.804,2.73,1.756c0.019,0.14-0.05,0.28-0.182,0.361 c-0.13,0.077-0.304,0.064-0.42-0.033l-0.854-0.664c-0.251-0.184-0.587-0.379-1.154-0.379c-0.872,0-1.182,0.554-1.182,0.942 c0,0.478,0.227,0.808,1.567,1.171c1.424,0.384,2.597,0.968,2.597,2.322c0,1.19-0.86,2.43-2.856,2.43L15.354,16.688z"
+        fill="currentColor"
+      />
+    </svg>
+  ),
   pnpm: (props: IconProps) => (
     <svg viewBox="0 0 24 24" aria-hidden {...props}>
       <path
@@ -625,7 +641,7 @@ export const Icons = {
     </svg>
   ),
 
-  // Designed by @ncdai
+  // Designed by priyanshuthakare
   trustedRegistry: (props: React.SVGProps<SVGSVGElement>) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -724,7 +740,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "slide-to-unlock": {
       return (
-        // Icon designed by @ncdai
+        // Icon designed by priyanshuthakare
         <svg viewBox="0 0 24 24" fill="none" {...props}>
           <path
             stroke="currentColor"
@@ -756,7 +772,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "github-contributions": {
       return (
-        // Icon designed by @ncdai
+        // Icon designed by priyanshuthakare
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -831,7 +847,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "elastic-slider": {
       return (
-        // Icon designed by @ncdai
+        // Icon designed by priyanshuthakare
         <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
           <path
             stroke="currentColor"
@@ -850,7 +866,7 @@ export function ComponentIcon({ variant, ...props }: ComponentIconProps) {
 
     case "toc-minimap": {
       return (
-        // Icon designed by @ncdai
+        // Icon designed by priyanshuthakare
         <svg viewBox="0 0 24 24" fill="none" aria-hidden {...props}>
           <path
             d="M21 5H3"
