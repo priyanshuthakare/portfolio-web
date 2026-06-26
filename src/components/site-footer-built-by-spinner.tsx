@@ -5,7 +5,7 @@ import { useTheme } from "next-themes"
 
 import { SpinningCircularText } from "@/registry/components/spinning-circular-text"
 
-const TEXT = "CRAFTED WITH CARE BY NCDAI • "
+const TEXT = "CRAFTED WITH CARE BY PRIYANSHU • "
 const DURATION = 4
 
 export function SiteFooterBuiltBySpinner() {

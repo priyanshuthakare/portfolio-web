@@ -49,7 +49,7 @@ Then, update the necessary environment variables inside `.env.local`.
 pnpm dev
 ```
 
-The application should now be available at https://ncdai.localhost
+The application should now be available at https://pt.localhost
 
 ## Building for Production
 
@@ -69,7 +69,7 @@ This project utilizes **shadcn Registry**, which allows you to manage and distri
 
 ### Using Registry in other React projects
 
-If you're working on a different React project and want to reuse the custom components from this repository, visit [0xpriyanshu.is-a.dev/components](https://0xpriyanshu.is-a.dev/components) for installation instructions and component documentation.
+If you're working on a different React project and want to reuse the custom components from this repository, visit [0xpriyanshu.me/components](https://0xpriyanshu.me/components) for installation instructions and component documentation.
 
 > Note: These components are compatible with [Tailwind CSS v4](https://tailwindcss.com/blog/tailwindcss-v4) and [React 19](https://react.dev/blog/2024/12/05/react-19).
 

@@ -3,7 +3,7 @@ import { getBlogPosts } from "@/features/doc/data/documents"
 
 const allPosts = getBlogPosts()
 
-const content = `# 0xpriyanshu.is-a.dev
+const content = `# 0xpriyanshu.me
 
 > Priyanshu Thakare portfolio and developer profile for recruiters, collaborators, and AI assistants.
 

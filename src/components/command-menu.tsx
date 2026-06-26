@@ -367,7 +367,7 @@ export function CommandMenu({
 
               <CommandMenuItem onHighlight={handleCommandHighlight} asChild>
                 <a
-                  href="https://assets.chanhdai.com/priyanshu-brand.zip"
+                  href="https://assets.0xpriyanshu.me/priyanshu-brand.zip"
                   download
                 >
                   <DownloadIcon />

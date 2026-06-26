@@ -16,7 +16,7 @@ export const USER: User = {
   address: "Pune, India",
   phoneNumberB64: "KzkxOTY5OTA3NTcxOA==",
   emailB64: "cHJpeWFuc2h1dGhha2FyZUB6b2hvbWFpbC5pbg==",
-  website: "https://0xpriyanshu.is-a.dev",
+  website: "https://0xpriyanshu.me",
   jobTitle: "Full-Stack Developer & AI Engineer",
   jobs: [
     {
@@ -44,7 +44,7 @@ export const USER: User = {
     darkOff: "https://github.com/priyanshuthakare.png",
     darkOn: "https://github.com/priyanshuthakare.png",
   },
-  ogImage: "https://0xpriyanshu.is-a.dev/og",
+  ogImage: "https://0xpriyanshu.me/og",
   namePronunciationUrl: "",
   timeZone: "Asia/Kolkata",
   keywords: [

@@ -5,7 +5,7 @@ import { USER } from "@/features/portfolio/data/user"
 
 export const SITE_INFO = {
   name: USER.displayName,
-  url: process.env.NEXT_PUBLIC_APP_URL || "https://0xpriyanshu.is-a.dev",
+  url: process.env.NEXT_PUBLIC_APP_URL || "https://0xpriyanshu.me",
   ogImage: USER.ogImage,
   description: USER.bio,
   keywords: USER.keywords,
@@ -46,5 +46,5 @@ export const SOURCE_CODE_GITHUB_URL =
 export const SPONSORSHIP_URL = "https://github.com/sponsors/priyanshuthakare"
 
 export const UTM_PARAMS = {
-  utm_source: "0xpriyanshu.is-a.dev",
+  utm_source: "0xpriyanshu.me",
 }

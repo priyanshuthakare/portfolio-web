@@ -22,7 +22,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@priyanshuthakare": "https://0xpriyanshu.is-a.dev/r/{name}.json",
+    "@priyanshuthakare": "https://0xpriyanshu.me/r/{name}.json",
     "@kibo-ui": "https://kibo-ui.com/r/{name}.json",
     "@react-bits": "https://reactbits.dev/r/{name}.json",
     "@soundcn": "https://soundcn.xyz/r/{name}.json",
