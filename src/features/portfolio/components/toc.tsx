@@ -24,6 +24,7 @@ export function TOC() {
           { title: "Awards", url: "#awards", depth: 2 },
           { title: "Certifications", url: "#certs", depth: 2 },
           { title: "Bookmarks", url: "#bookmarks", depth: 2 },
+          { title: "Brand", url: "#brand", depth: 2 },
           { title: "Insights", url: "#insights", depth: 2 },
         ]}
         options={{

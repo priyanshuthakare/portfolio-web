@@ -4,16 +4,22 @@ import { PriyanshuMark } from "@/components/priyanshu-mark"
 import { PriyanshuWordmark } from "@/components/priyanshu-wordmark"
 
 import { Panel, PanelHeader, PanelTitle } from "./panel"
+import { PanelTitleCopy } from "./panel-title-copy"
 
 const BrandContextMenu = dynamic(() =>
   import("@/components/brand-context-menu").then((mod) => mod.BrandContextMenu)
 )
 
+const ID = "brand"
+
 export function Brand() {
   return (
-    <Panel>
+    <Panel id={ID}>
       <PanelHeader>
-        <PanelTitle>Brand</PanelTitle>
+        <PanelTitle>
+          <a href={`#${ID}`}>Brand</a>
+          <PanelTitleCopy id={ID} />
+        </PanelTitle>
       </PanelHeader>
 
       <BrandContextMenu>
