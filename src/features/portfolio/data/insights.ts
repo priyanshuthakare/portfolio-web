@@ -23,10 +23,17 @@ type InsightsResponse = {
   endDate: ISODateString
 }
 
-type OpenPanelMetrics = {
-  visitors: { current: number }
-  sessions: { current: number }
-  pageviews: { current: number }
+type OpenPanelMetricsResponse = {
+  metrics: {
+    unique_visitors: number
+    total_sessions: number
+    total_screen_views: number
+  }
+  series: Array<{
+    date: ISODateString
+    unique_visitors: number
+    total_sessions: number
+  }>
 }
 
 export const getInsights = unstable_cache(
@@ -55,17 +62,25 @@ export const getInsights = unstable_cache(
         return null
       }
 
-      const metrics = (await res.json()) as OpenPanelMetrics
+      const metrics = (await res.json()) as OpenPanelMetricsResponse
+
+      const series = (metrics.series ?? []).map((item) => ({
+        date: item.date,
+        unique_visitors: item.unique_visitors,
+        total_sessions: item.total_sessions,
+      }))
 
       return {
         summary: {
-          unique_visitors: metrics.visitors.current,
-          total_sessions: metrics.sessions.current,
-          total_screen_views: metrics.pageviews.current,
+          unique_visitors: metrics.metrics.unique_visitors,
+          total_sessions: metrics.metrics.total_sessions,
+          total_screen_views: metrics.metrics.total_screen_views,
         },
-        series: [],
-        startDate: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
-        endDate: new Date().toISOString(),
+        series,
+        startDate:
+          series[0]?.date ??
+          new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
+        endDate: series[series.length - 1]?.date ?? new Date().toISOString(),
       }
     } catch {
       return null
