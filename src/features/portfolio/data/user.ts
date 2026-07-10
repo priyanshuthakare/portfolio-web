@@ -44,7 +44,7 @@ export const USER: User = {
     darkOff: "https://github.com/priyanshuthakare.png",
     darkOn: "https://github.com/priyanshuthakare.png",
   },
-  ogImage: "https://0xpriyanshu.me/og",
+  ogImage: "/og",
   namePronunciationUrl: "",
   timeZone: "Asia/Kolkata",
   keywords: [
