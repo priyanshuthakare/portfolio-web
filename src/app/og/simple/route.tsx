@@ -14,7 +14,7 @@ const geistMonoRegular = readFileSync(
 
 // PriyanshuMark — "PT" logomark, viewBox 0 0 512 256
 const MARK_PATH =
-  "M0 0h192v64H0zM320 0h192v64H320zM0 64h64v64H0zM128 64h64v64h-64zM384 64h64v64h-64zM0 128h192v64H0zM384 128h64v64h-64zM0 192h64v64H0zM384 192h64v64h-64z"
+  "M0 0h192v64H0zM320 0h192v64H320zM0 64h64v64H0zM128 64h64v64h-64zM384 64h64v64h-64zM0 128h128v64H0zM384 128h64v64h-64zM0 192h64v64H0zM384 192h64v64h-64z"
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
