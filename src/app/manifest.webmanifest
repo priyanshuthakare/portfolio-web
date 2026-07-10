@@ -4,25 +4,25 @@
   "description": "Full-stack developer building high-performance web apps, AI workflows, and blockchain products.",
   "icons": [
     {
-      "src": "https://assets.0xpriyanshu.me/images/icon-vector.svg",
+      "src": "/favicon.svg",
       "type": "image/svg+xml",
       "sizes": "any",
       "purpose": "any"
     },
     {
-      "src": "https://assets.0xpriyanshu.me/images/icon-192x192.png",
+      "src": "/icons/192",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "https://assets.0xpriyanshu.me/images/icon-512x512.png",
+      "src": "/icons/512",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "https://assets.0xpriyanshu.me/images/maskable-icon.png",
+      "src": "/icons/512?maskable=1",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"

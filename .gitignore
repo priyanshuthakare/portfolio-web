@@ -24,7 +24,7 @@ build
 .DS_Store
 .eslintcache
 *.pem
-
+temp refference io
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -43,3 +43,6 @@ next-env.d.ts
 
 # pt
 .pt
+
+# October desktop — local canvas state
+.october/
