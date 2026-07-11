@@ -5,18 +5,102 @@ import type { Transition } from "motion/react"
 import { motion } from "motion/react"
 
 import { metalClickSound } from "@/lib/soundcn/metal-click"
+import { cn } from "@/lib/utils"
 import { useSound } from "@/hooks/soundcn/use-sound"
 
 /**
- * Designed by priyanshuthakare on Figma with [Fast Isometric Plugin](https://www.figma.com/community/plugin/1249759048471403961).
+ * Isometric "PT" monogram (Priyanshu Thakare).
+ *
+ * Each letter is composed of flat bars laid out in a letter grid `[a0, a1, b0, b1]`
+ * (a → horizontal, b → vertical). Every bar is extruded into a shallow 3D box and
+ * projected with a 30° isometric camera, then painted back-to-front so nearer
+ * boxes occlude farther ones. Designed to sit on top of the FIG_001 video.
+ *
  * Inspired by tailwindcss.com.
  */
-export function PriyanshuMarkIsometric() {
+
+// Isometric projection constants.
+const S = 20 // unit scale (px per grid cell)
+const COS = 0.8660254 // cos(30°)
+const SIN = 0.5 // sin(30°)
+const H = 0.6 // extrusion height of every bar
+
+type Bar = [a0: number, a1: number, b0: number, b1: number]
+
+// Letters, defined in local letter-grid coordinates (0,0 is top-left).
+const P_BARS: Bar[] = [
+  [0, 1, 0, 5], // stem
+  [1, 4, 0, 1], // top of bowl
+  [3, 4, 0, 3], // right of bowl
+  [1, 3, 2, 3], // bottom of bowl
+]
+
+const T_BARS: Bar[] = [
+  [0, 4, 0, 1], // top bar
+  [1.5, 2.5, 1, 5], // stem
+]
+
+const P_OFFSET = 0
+const T_OFFSET = 5
+
+type ProjectedBox = {
+  depth: number
+  top: string
+  right: string
+  left: string
+}
+
+/** Project a 3D point (grid units) to 2D screen space. */
+function project(u: number, v: number, z: number): [number, number] {
+  return [(u - v) * COS * S, (u + v) * SIN * S - z * S]
+}
+
+/** Build an SVG path string from a list of projected points. */
+function toPath(points: Array<[number, number]>): string {
+  return (
+    points
+      .map(([x, y], i) => `${i === 0 ? "M" : "L"}${x.toFixed(2)} ${y.toFixed(2)}`)
+      .join("") + "Z"
+  )
+}
+
+/** Turn a single bar into the three visible faces of its extruded box. */
+function boxFromBar(bar: Bar, offset: number): ProjectedBox {
+  const [a0, a1, b0, b1] = bar
+  const u0 = a0 + offset
+  const u1 = a1 + offset
+  const v0 = b0
+  const v1 = b1
+
+  const top = toPath([
+    project(u0, v0, H),
+    project(u1, v0, H),
+    project(u1, v1, H),
+    project(u0, v1, H),
+  ])
+
+  // Face pointing toward the viewer on the +u side.
+  const right = toPath([
+    project(u1, v0, 0),
+    project(u1, v1, 0),
+    project(u1, v1, H),
+    project(u1, v0, H),
+  ])
+
+  // Face pointing toward the viewer on the +v side.
+  const left = toPath([
+    project(u0, v1, 0),
+    project(u1, v1, 0),
+    project(u1, v1, H),
+    project(u0, v1, H),
+  ])
+
+  return { depth: u0 + v0, top, right, left }
+}
+
+export function PriyanshuMarkIsometric({ className }: { className?: string }) {
   const id = useId()
-  const ids = {
-    facePattern: `priyanshu-face-pattern-${id}`,
-    faceFill: `priyanshu-face-fill-${id}`,
-  }
+  const patternId = `pt-hatch-${id}`
 
   const transition: Transition = {
     type: "spring",
@@ -27,10 +111,19 @@ export function PriyanshuMarkIsometric() {
 
   const [play] = useSound(metalClickSound)
 
+  // Build every box and sort back-to-front for correct occlusion.
+  const boxes = [
+    ...P_BARS.map((bar) => boxFromBar(bar, P_OFFSET)),
+    ...T_BARS.map((bar) => boxFromBar(bar, T_OFFSET)),
+  ].sort((a, b) => a.depth - b.depth)
+
   return (
     <motion.svg
-      className="h-auto w-full touch-manipulation overflow-visible [--pattern:color-mix(in_oklab,var(--foreground)_12%,var(--background))] [--stroke:color-mix(in_oklab,var(--foreground)_16%,var(--background))]"
-      viewBox="0 0 556 354"
+      className={cn(
+        "h-auto w-full touch-manipulation overflow-visible drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]",
+        className,
+      )}
+      viewBox="-105 -28 285 180"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden
@@ -40,138 +133,39 @@ export function PriyanshuMarkIsometric() {
     >
       <defs>
         <pattern
-          id={ids.facePattern}
-          width="10"
-          height="10"
+          id={patternId}
+          width="8"
+          height="8"
           patternUnits="userSpaceOnUse"
         >
           <path
-            d="M-1 1l2 -2M0 10l10 -10M9 11l2 -2"
-            stroke="var(--pattern)"
+            d="M-1 1l2 -2M0 8l8 -8M7 9l2 -2"
+            stroke="rgba(255,255,255,0.35)"
             strokeWidth="1"
           />
         </pattern>
-
-        <motion.g
-          id={ids.faceFill}
-          variants={{
-            normal: {
-              transform: "translate(0px, 0px)",
-            },
-            pressed: {
-              transform: "translate(0px, 16px)",
-            },
-          }}
-          transition={transition}
-        >
-          <path d="M333.05 256.58L222.20 320.58L166.78 288.58L277.63 224.58L333.05 256.58Z" />
-          <path d="M388.48 32.58L277.63 96.58L388.48 160.58L499.33 96.58L554.76 128.58L388.48 224.58L166.78 96.58L333.05 0.58L388.48 32.58Z" />
-          <path d="M166.78 288.58L111.35 320.58L0.50 256.58L55.93 224.58L166.78 288.58Z" />
-          <path d="M554.76 64.58L499.33 96.58L388.48 32.58L443.90 0.58L554.76 64.58Z" />
-          <path d="M166.78 160.58L55.93 224.58L0.50 192.58L111.35 128.58L166.78 160.58Z" />
-        </motion.g>
       </defs>
 
-      <g className="stroke-line" strokeWidth="1" strokeDasharray="4 2">
-        <path d="M-477.55 756.57L1254.51 -243.41" />
-        {/* <path d="M-782.39 676.57L949.67 -323.41" /> */}
-        <path d="M977.37 788.58L-754.67 -211.42" />
-        <path d="M1143.65 692.58L-588.39 -307.42" />
-        {/* <path d="M1337.65 612.57L-394.41 -387.41" /> */}
-      </g>
-
-      <g className="fill-background" fillRule="evenodd" clipRule="evenodd">
-        <motion.path
-          variants={{
-            normal: {
-              d: "M166.78 160.58L55.93 224.58L0.50 192.58V224.58L55.93 256.58L166.78 192.58V160.58Z",
-            },
-            pressed: {
-              d: "M166.78 176.58L55.93 240.58L0.50 208.58V224.58L55.93 256.58L166.78 192.58V176.58Z",
-            },
-          }}
-          transition={transition}
-        />
-        <motion.path
-          variants={{
-            normal: {
-              d: "M166.78 288.58L111.35 320.58L0.50 256.58V288.58L111.35 352.58L166.78 320.58L222.20 352.58L333.05 288.58V256.58L222.20 320.58L166.78 288.58Z",
-            },
-            pressed: {
-              d: "M166.78 304.58L111.35 336.58L0.50 272.58V288.58L111.35 352.58L166.78 320.58L222.20 352.58L333.05 288.58V272.58L222.20 336.58L166.78 304.58Z",
-            },
-          }}
-          transition={transition}
-        />
-        <motion.path
-          variants={{
-            normal: {
-              d: "M388.48 224.58L166.78 96.58V128.58L388.48 256.58L554.76 160.58V128.58L388.48 224.58Z",
-            },
-            pressed: {
-              d: "M388.48 240.58L166.78 112.58V128.58L388.48 256.58L554.76 160.58V144.58L388.48 240.58Z",
-            },
-          }}
-          transition={transition}
-        />
-        <motion.path
-          variants={{
-            normal: {
-              d: "M388.48 32.58L277.63 96.58V128.58L388.48 64.58L499.33 128.58L554.75 96.58V64.58L499.33 96.58L388.48 32.58Z",
-            },
-            pressed: {
-              d: "M388.48 48.58L277.63 112.58V128.58L388.48 64.58L499.33 128.58L554.75 96.58V80.58L499.33 112.58L388.48 48.58Z",
-            },
-          }}
-          transition={transition}
-        />
-      </g>
-
-      <use href={`#${ids.faceFill}`} className="fill-background" />
-      <use href={`#${ids.faceFill}`} fill={`url(#${ids.facePattern})`} />
-
-      <motion.path
+      <motion.g
         variants={{
-          normal: {
-            d: [
-              // C
-              "M28.21 240.58 L0.50 224.58 V192.58 L111.35 128.58 L166.78 160.58 V192.58 L83.64 240.58",
-              "M166.78 160.58 L0.50 256.58 V288.58 L111.35 352.58 L166.78 320.58 L222.20 352.58 L333.05 288.58 V256.58 L277.63 224.58 L166.78 288.58 L0.50 192.58",
-              "M0.50 256.58 L111.35 320.58 L166.78 288.58 L222.20 320.58 L333.05 256.58",
-              "M111.35 320.58 V352.58",
-              "M166.78 288.58 V320.58",
-              "M222.20 320.58 V352.58",
-              // D
-              "M499.33 96.58 L554.76 128.58 V160.58 L388.48 256.58 L166.78 128.58 V96.58 L333.05 0.58 L499.33 96.58",
-              "M166.78 96.58 L388.48 224.58 L554.76 128.58",
-              "M527.04 112.58 L554.76 96.58 V64.58 L443.90 0.58 L277.63 96.58 L388.48 160.58 L554.76 64.58",
-              "M305.34 112.58 L388.48 64.58 L471.62 112.58",
-              "M388.48 224.58 V256.58",
-              "M388.48 32.58 V64.58",
-            ].join(""),
-          },
-          pressed: {
-            d: [
-              // C
-              "M42.07 248.58 L0.50 224.58 V208.58 L111.35 144.58 L166.78 176.58 V192.58 L69.78 248.58",
-              "M166.78 176.58 L0.5 272.58 V288.58 L111.35 352.58 L166.78 320.58 L222.20 352.58 L333.05 288.58 V272.58 L277.63 240.58 L166.78 304.58 L0.5 208.58",
-              "M0.5 272.58 L111.35 336.58 L166.78 304.58 L222.20 336.58 L333.05 272.58",
-              "M111.35 336.58 V352.58",
-              "M166.78 304.58 V320.58",
-              "M222.20 336.58 V352.58",
-              // D
-              "M499.33 112.58 L554.76 144.58 V160.58 L388.48 256.58 L166.78 128.58 V112.58 L333.05 16.58 L499.33 112.58",
-              "M166.78 112.58 L388.48 240.58 L554.76 144.58",
-              "M513.19 120.58 L554.76 96.58 V80.58 L443.90 16.58 L277.63 112.58 L388.48 176.58 L554.76 80.58",
-              "M291.48 120.58 L388.48 64.58 L485.47 120.58",
-              "M388.48 240.58 V256.58",
-              "M388.48 48.58 V64.58",
-            ].join(""),
-          },
+          normal: { transform: "translate(0px, 0px)" },
+          pressed: { transform: "translate(0px, 10px)" },
         }}
         transition={transition}
-        stroke="var(--stroke)"
-      />
+        stroke="rgba(255,255,255,0.9)"
+        strokeWidth="1.25"
+        strokeLinejoin="round"
+      >
+        {boxes.map((box, i) => (
+          <g key={i}>
+            {/* Side faces first, top last, so the top reads cleanly. */}
+            <path d={box.right} fill="rgba(10,12,16,0.62)" />
+            <path d={box.left} fill="rgba(20,24,30,0.5)" />
+            <path d={box.top} fill="rgba(28,32,40,0.42)" />
+            <path d={box.top} fill={`url(#${patternId})`} stroke="none" />
+          </g>
+        ))}
+      </motion.g>
     </motion.svg>
   )
 }

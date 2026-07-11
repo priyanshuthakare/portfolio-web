@@ -3,6 +3,7 @@ import { USER } from "@/features/portfolio/data/user"
 
 import { AvatarLightsToggle } from "./avatar-lights-toggle"
 import { FlipSentences } from "./flip-sentences"
+import { PriyanshuMarkIsometric } from "./priyanshu-mark-isometric"
 import { PronounceMyName } from "./pronounce-my-name"
 import { VerifiedIcon } from "./verified-icon"
 
@@ -10,16 +11,21 @@ export function ProfileHeader() {
   return (
     <div className="screen-line-bottom grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] overflow-y-clip border-x border-line">
       <figure className="relative col-span-2 p-2 sm:col-span-1 sm:col-start-2 sm:p-4">
-        <video
-          className="h-full w-full object-cover"
-          src="/sea-storm.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          aria-hidden
-        />
-        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-zinc-400 select-none sm:right-4 dark:text-zinc-700">
+        <div className="relative overflow-hidden">
+          <video
+            className="aspect-[556/354] w-full object-cover"
+            src="/sea-storm.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden
+          />
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <PriyanshuMarkIsometric className="w-2/5 max-w-56" />
+          </div>
+        </div>
+        <figcaption className="pointer-events-none absolute right-2 bottom-2 font-mono text-xs leading-none text-zinc-300 select-none sm:right-4 dark:text-zinc-300">
           FIG_001
         </figcaption>
       </figure>
