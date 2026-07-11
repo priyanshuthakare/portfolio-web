@@ -8,6 +8,7 @@ type InsightsSummary = {
   unique_visitors: number
   total_sessions: number
   total_screen_views: number
+  avg_session_duration: number
 }
 
 type InsightsSeriesItem = {
@@ -23,19 +24,6 @@ type InsightsResponse = {
   endDate: ISODateString
 }
 
-type OpenPanelMetricsResponse = {
-  metrics: {
-    unique_visitors: number
-    total_sessions: number
-    total_screen_views: number
-  }
-  series: Array<{
-    date: ISODateString
-    unique_visitors: number
-    total_sessions: number
-  }>
-}
-
 export const getInsights = unstable_cache(
   async (): Promise<InsightsResponse | null> => {
     const projectId = process.env.OPENPANEL_PROJECT_ID
@@ -48,7 +36,7 @@ export const getInsights = unstable_cache(
 
     try {
       const res = await fetch(
-        `https://api.openpanel.dev/insights/${projectId}/metrics`,
+        `https://api.openpanel.dev/insights/${projectId}/overview`,
         {
           signal: AbortSignal.timeout(5000),
           headers: {
@@ -59,30 +47,16 @@ export const getInsights = unstable_cache(
       )
 
       if (!res.ok) {
+        const body = await res.text().catch(() => "")
+        console.error(
+          `[insights] OpenPanel request failed: ${res.status} ${res.statusText} ${body}`
+        )
         return null
       }
 
-      const metrics = (await res.json()) as OpenPanelMetricsResponse
-
-      const series = (metrics.series ?? []).map((item) => ({
-        date: item.date,
-        unique_visitors: item.unique_visitors,
-        total_sessions: item.total_sessions,
-      }))
-
-      return {
-        summary: {
-          unique_visitors: metrics.metrics.unique_visitors,
-          total_sessions: metrics.metrics.total_sessions,
-          total_screen_views: metrics.metrics.total_screen_views,
-        },
-        series,
-        startDate:
-          series[0]?.date ??
-          new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(),
-        endDate: series[series.length - 1]?.date ?? new Date().toISOString(),
-      }
-    } catch {
+      return (await res.json()) as InsightsResponse
+    } catch (error) {
+      console.error("[insights] OpenPanel request threw:", error)
       return null
     }
   },
