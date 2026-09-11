@@ -135,6 +135,12 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     kind: "page",
     icon: <LineChartIcon />,
   },
+  {
+    title: "Signature",
+    href: "/#signature",
+    kind: "page",
+    icon: <QuoteIcon strokeWidth={1.5} />,
+  },
 ]
 
 const SOCIAL_LINK_ITEMS: CommandLinkItem[] = SOCIAL_LINKS.map((item) => ({
