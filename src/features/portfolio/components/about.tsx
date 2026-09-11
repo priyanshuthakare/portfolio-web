@@ -1,10 +1,10 @@
-import { ArrowUpRightIcon } from "lucide-react"
-import { addQueryParams } from "@/utils/url"
 import { decodeEmail } from "@/utils/string"
+import { addQueryParams } from "@/utils/url"
+import { ArrowUpRightIcon } from "lucide-react"
 
 import { UTM_PARAMS } from "@/config/site"
-import { Button } from "@/components/base/ui/button"
 import { Prose } from "@/components/ui/typography"
+import { Button } from "@/components/base/ui/button"
 import { Markdown } from "@/components/markdown"
 import { GitHubContributions } from "@/features/portfolio/components/github-contributions"
 import {

@@ -10,7 +10,6 @@ import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Brand } from "@/features/portfolio/components/brand"
 import { Certifications } from "@/features/portfolio/components/certifications"
-
 import { Experiences } from "@/features/portfolio/components/experiences"
 import {
   Insights,
