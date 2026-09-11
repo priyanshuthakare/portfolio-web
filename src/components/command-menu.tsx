@@ -42,9 +42,9 @@ import {
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
 
-import { PriyanshuMark, getMarkSVG } from "./priyanshu-mark"
-import { getWordmarkSVG } from "./priyanshu-wordmark"
 import { Icons } from "./icons"
+import { getMarkSVG, PriyanshuMark } from "./priyanshu-mark"
+import { getWordmarkSVG } from "./priyanshu-wordmark"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
 
@@ -134,6 +134,12 @@ const PORTFOLIO_LINKS: CommandLinkItem[] = [
     href: "/#insights",
     kind: "page",
     icon: <LineChartIcon />,
+  },
+  {
+    title: "Signature",
+    href: "/#signature",
+    kind: "page",
+    icon: <QuoteIcon strokeWidth={1.5} />,
   },
 ]
 
