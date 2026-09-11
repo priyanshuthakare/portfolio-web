@@ -42,9 +42,9 @@ import {
 import type { DocPreview } from "@/features/doc/types/document"
 import { SOCIAL_LINKS } from "@/features/portfolio/data/social-links-v2"
 
-import { PriyanshuMark, getMarkSVG } from "./priyanshu-mark"
-import { getWordmarkSVG } from "./priyanshu-wordmark"
 import { Icons } from "./icons"
+import { getMarkSVG, PriyanshuMark } from "./priyanshu-mark"
+import { getWordmarkSVG } from "./priyanshu-wordmark"
 import { Button } from "./ui/button"
 import { Kbd, KbdGroup } from "./ui/kbd"
 
