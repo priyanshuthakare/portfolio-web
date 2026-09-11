@@ -57,7 +57,12 @@ export function ProjectItem({
           <CollapsibleTrigger className="flex w-full items-center gap-2 p-4 pr-2 text-left">
             <div className="flex-1">
               <h3 className="mb-1 leading-snug font-medium text-balance">
-                {project.title}
+                <span>{project.title}</span>
+                {project.status && (
+                  <Tag className="ml-2 border-foreground/15 bg-zinc-100/80 text-foreground dark:bg-zinc-900/80">
+                    {project.status}
+                  </Tag>
+                )}
               </h3>
 
               <dl className="text-sm text-muted-foreground">
@@ -79,6 +84,10 @@ export function ProjectItem({
                   )}
                 </dd>
               </dl>
+
+              <p className="mt-1 truncate text-sm text-muted-foreground">
+                {project.summary}
+              </p>
             </div>
 
             <Tooltip>
@@ -99,6 +108,10 @@ export function ProjectItem({
                 <p>Open Project Link</p>
               </TooltipContent>
             </Tooltip>
+
+            <span className="shrink-0 text-xs text-muted-foreground">
+              View Details
+            </span>
 
             <div className="shrink-0 text-muted-foreground [&_svg]:size-4">
               <CollapsibleChevronsUpDownIcon duration={0.15} />

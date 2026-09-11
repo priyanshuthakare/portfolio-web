@@ -17,6 +17,7 @@ export const USER: User = {
   phoneNumberB64: "KzkxOTY5OTA3NTcxOA==",
   emailB64: "cHJpeWFuc2h1dGhha2FyZUB6b2hvbWFpbC5pbg==",
   website: "https://0xpriyanshu.me",
+  bookingUrl: "https://cal.com/priyanshuthakare",
   jobTitle: "Full-Stack Developer & AI Engineer",
   jobs: [
     {
@@ -32,11 +33,8 @@ export const USER: User = {
       experienceId: "growth-magnet",
     },
   ],
-  about: `
-- I’m Priyanshu Thakare, a full-stack developer focused on shipping production-ready web products with strong UX and maintainable architecture.
-- I build across React, Node.js, Python, and modern cloud tooling, with hands-on experience in AI automations, real-time systems, and blockchain-backed apps.
-- Recent work includes Ayurchain, Stability OS, Appointment System, and DealDoc.ai.
-`,
+  about:
+    "I’m Priyanshu Thakare, a full-stack developer and AI engineer focused on shipping production web products that are fast, dependable, and maintainable under real usage. I work across React, Next.js, Node.js, Python, and modern cloud tooling, with hands-on delivery experience in AI automations, real-time systems, and blockchain-backed workflows. Recent projects like Ayurchain, Stability OS, Appointment System, and DealDoc.ai reflect how I build: clear architecture, measurable outcomes, and execution that holds up in production.",
   avatar: "https://github.com/priyanshuthakare.png",
   avatarVariants: {
     lightOff: "https://github.com/priyanshuthakare.png",

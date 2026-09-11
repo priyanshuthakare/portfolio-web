@@ -10,7 +10,6 @@ import { Blog } from "@/features/portfolio/components/blog"
 import { Bookmarks } from "@/features/portfolio/components/bookmarks"
 import { Brand } from "@/features/portfolio/components/brand"
 import { Certifications } from "@/features/portfolio/components/certifications"
-
 import { Experiences } from "@/features/portfolio/components/experiences"
 import {
   Insights,
@@ -19,6 +18,7 @@ import {
 import { Overview } from "@/features/portfolio/components/overview"
 import { ProfileHeader } from "@/features/portfolio/components/profile-header"
 import { Projects } from "@/features/portfolio/components/projects"
+import { Signature } from "@/features/portfolio/components/signature"
 import { SocialLinks } from "@/features/portfolio/components/social-links-v2"
 import { TechStack } from "@/features/portfolio/components/tech-stack"
 import { USER } from "@/features/portfolio/data/user"
@@ -73,6 +73,9 @@ export default function HomePage() {
           <Suspense fallback={<InsightsSkeleton />}>
             <Insights />
           </Suspense>
+          <Separator />
+
+          <Signature />
           <Separator />
         </div>
       </div>
