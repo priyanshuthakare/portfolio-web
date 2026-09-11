@@ -21,6 +21,8 @@ export type User = {
   emailB64: string
   /** Personal/homepage URL */
   website: string
+  /** Public booking URL for scheduling calls */
+  bookingUrl: string
   /** Primary/current role shown on profile */
   jobTitle: string
   /** Work history entries */

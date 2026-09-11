@@ -14,6 +14,10 @@ export type Project = {
   }
   /** Public URL (site, repository, demo, or video). */
   link: string
+  /** At-a-glance one-line project pitch shown in collapsed list. */
+  summary: string
+  /** Short status label for the project. */
+  status?: "Live" | "Beta" | "Prototype"
   /** Tags/technologies for chips or filtering. */
   skills: string[]
   /** Optional rich description; Markdown and line breaks supported. */

@@ -26,6 +26,7 @@ export function TOC() {
           { title: "Bookmarks", url: "#bookmarks", depth: 2 },
           { title: "Brand", url: "#brand", depth: 2 },
           { title: "Insights", url: "#insights", depth: 2 },
+          { title: "Signature", url: "#signature", depth: 2 },
         ]}
         options={{
           threshold: 0,
