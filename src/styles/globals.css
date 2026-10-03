@@ -3,6 +3,7 @@
 @import "./style-preview.css";
 @import "./scroll-fade-effect.css";
 @import "./gradient-border-plugin.css";
+@import "./manas.css";
 
 @plugin "@tailwindcss/typography";
 
