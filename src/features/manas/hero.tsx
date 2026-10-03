@@ -169,8 +169,8 @@ export function Hero() {
         />
         <div className="min-w-0">
           <h1
-            className="font-bold leading-tight"
-            style={{ fontSize: 40, letterSpacing: "-0.02em", color: "var(--manas-text)" }}
+            className="font-bold leading-tight text-2xl sm:text-[40px]"
+            style={{ letterSpacing: "-0.02em", color: "var(--manas-text)" }}
           >
             {USER.displayName}
           </h1>
@@ -180,8 +180,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* View counter */}
-      <div className="flex justify-end mt-2">
+      {/* View counter — hidden on mobile */}
+      <div className="hidden sm:flex justify-end mt-2">
         <span
           className="inline-flex items-center gap-1 text-xs"
           style={{ color: "var(--manas-muted)" }}

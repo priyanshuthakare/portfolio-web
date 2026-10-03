@@ -95,7 +95,7 @@ export function Experiences() {
                     </span>
                     {pos.employmentType && (
                       <span
-                        className="text-[11px] px-2 py-0.5 rounded-full"
+                        className="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full"
                         style={{
                           border: "1px solid var(--manas-border)",
                           color: "var(--manas-muted)",
@@ -105,25 +105,25 @@ export function Experiences() {
                       </span>
                     )}
                   </span>
-                  <span className="block text-sm mt-0.5" style={{ color: "var(--manas-muted)" }}>
+                  <span className="block text-[13px] mt-0.5" style={{ color: "var(--manas-muted)" }}>
                     {pos.title}
                   </span>
                 </span>
 
-                <span className="text-right shrink-0">
-                  <span className="block text-xs" style={{ color: "var(--manas-muted)" }}>
+                <span className="text-right shrink-0 max-w-[8.75rem]">
+                  <span className="block text-[13px]" style={{ color: "var(--manas-muted)" }}>
                     {formatPeriod(pos.employmentPeriod.start, pos.employmentPeriod.end)}
                   </span>
                   <ChevronDown
                     size={16}
-                    className={cn("ml-auto mt-1 transition-transform", isOpen && "rotate-180")}
+                    className={cn("hidden sm:block ml-auto mt-1 transition-transform", isOpen && "rotate-180")}
                     style={{ color: "var(--manas-muted)" }}
                   />
                 </span>
               </button>
 
               {isOpen && (
-                <ul className="mt-3 ml-[52px] space-y-1.5 text-sm list-disc pl-4" style={{ color: "var(--manas-text)" }}>
+                <ul className="hidden sm:block mt-3 ml-[52px] space-y-1.5 text-sm list-disc pl-4" style={{ color: "var(--manas-text)" }}>
                   {bullets(pos.description).map((b, i) => (
                     <li key={i}>{b}</li>
                   ))}

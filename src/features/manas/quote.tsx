@@ -8,24 +8,24 @@ export function Quote() {
       <div className="relative py-10 px-4">
         <p
           aria-hidden
-          className="text-center font-serif select-none mb-6"
-          style={{ fontSize: 22, color: "var(--manas-rails)", lineHeight: 1, letterSpacing: "0.1em" }}
+          className="text-center font-serif select-none"
+          style={{ fontSize: 38, color: "var(--manas-rails)", lineHeight: 1, letterSpacing: "0.08em", marginBottom: 60 }}
         >
           &ldquo;&ldquo;
         </p>
         <blockquote
-          className="text-center mx-auto"
-          style={{ fontSize: 26, color: "var(--manas-text)", maxWidth: 560, lineHeight: 1.5 }}
+          className="text-center mx-auto font-bold italic tracking-tight"
+          style={{ fontSize: 30, color: "#3f3f46", maxWidth: 600, lineHeight: 1.4 }}
         >
           &ldquo;The first Principle is that you must not fool your self -- and you are the easiest
           person to fool&rdquo;
         </blockquote>
-        <p
-          className="text-center italic font-serif mt-6"
-          style={{ fontSize: 15, color: "var(--manas-muted)" }}
+        <h2
+          className="text-center mt-6"
+          style={{ fontSize: 17, color: "var(--manas-muted)", fontFamily: "cursive" }}
         >
           -- Richard Feyman --
-        </p>
+        </h2>
       </div>
 
       <SectionDivider />
