@@ -36,12 +36,13 @@ export function GithubHeatmap() {
     let cancelled = false
     fetch("https://github-contributions-api.jogruber.de/v4/priyanshuthakare?y=last")
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error("bad response"))))
-      .then((data: ApiResponse) => {
+      .then((data: unknown) => {
         if (cancelled) return
-        setDays(data.contributions ?? [])
-        const totals = data.total ?? {}
+        const parsed = data as ApiResponse
+        setDays(parsed.contributions ?? [])
+        const totals = parsed.total ?? {}
         const year = Object.keys(totals).sort().pop()
-        setTotal(year ? totals[year] : data.contributions.reduce((s, d) => s + d.count, 0))
+        setTotal(year ? totals[year] : parsed.contributions.reduce((s, d) => s + d.count, 0))
       })
       .catch(() => {
         if (!cancelled) setFailed(true)
