@@ -137,9 +137,9 @@
   height: 14px;
 }
 
-/* OS dark-mode support (no manual toggle) */
+/* OS dark-mode support (no manual toggle) — skipped when a creative theme is active */
 @media (prefers-color-scheme: dark) {
-  .manas-root:not([data-theme-override]) {
+  :root:not([data-theme-override]) .manas-root {
     --manas-bg: #09090b;
     --manas-text: #e4e4e7;
     --manas-muted: #a1a1aa;
