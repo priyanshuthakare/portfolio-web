@@ -77,12 +77,6 @@ export function ManasThemeProvider({ children }: { children: ReactNode }) {
     root.style.setProperty("--manas-muted", theme.muted)
     root.style.setProperty("--manas-border", theme.border)
     root.style.setProperty("--manas-rails", theme.rails)
-    // Tell CSS to skip OS dark-mode override when a creative theme is active
-    if (themeId !== "default") {
-      root.setAttribute("data-theme-override", "")
-    } else {
-      root.removeAttribute("data-theme-override")
-    }
     try {
       localStorage.setItem(STORAGE_KEY, themeId)
     } catch {
