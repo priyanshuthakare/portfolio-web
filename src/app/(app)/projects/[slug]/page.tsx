@@ -1,10 +1,7 @@
 import type { Metadata } from "next"
 
 import { ManasThemeProvider } from "@/features/manas/theme-provider"
-import {
-  ProjectDetailPage,
-  getProject,
-} from "@/features/manas/project-detail"
+import { ProjectDetailPage } from "@/features/manas/project-detail"
 import { PROJECTS } from "@/features/portfolio/data/projects"
 
 export function generateStaticParams() {
@@ -17,7 +14,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const project = getProject(slug)
+  const project = PROJECTS.find((p) => p.id === slug)
   if (!project) return { title: "Project not found" }
   return {
     title: `${project.title} — Priyanshu Thakare`,
