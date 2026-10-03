@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Clapperboard, Github, Globe } from "lucide-react"
+import { ArrowLeft, Clapperboard, Globe } from "lucide-react"
+import { Icons } from "@/components/icons"
 
 import type { Project } from "@/features/portfolio/types/projects"
 import { PROJECTS } from "@/features/portfolio/data/projects"
@@ -101,7 +102,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           className="manas-btn manas-btn-light"
           onMouseEnter={playBlip}
         >
-          <Github size={16} />
+          <Icons.github width={16} height={16} />
           Github
         </a>
         <a
