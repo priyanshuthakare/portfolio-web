@@ -1,0 +1,149 @@
+/* manasr.dev-style blueprint design system. Scoped under .manas-root. */
+
+.manas-root {
+  --manas-bg: #ffffff;
+  --manas-text: #18181b;
+  --manas-muted: #71717a;
+  --manas-border: #e4e4e7;
+  --manas-rails: #d4d4d8;
+
+  background: var(--manas-bg);
+  color: var(--manas-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", monospace;
+  min-height: 100vh;
+  position: relative;
+  transition:
+    background-color 1s ease,
+    color 1s ease,
+    border-color 1s ease;
+}
+
+.manas-root * {
+  transition-property: background-color, color, border-color;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+
+/* Fixed vertical dashed rails flanking the content column */
+.manas-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px dashed var(--manas-rails);
+  pointer-events: none;
+  z-index: 1;
+}
+.manas-rail-left {
+  left: calc(50% - 320px - 48px);
+}
+.manas-rail-right {
+  left: calc(50% + 320px + 48px);
+}
+@media (max-width: 800px) {
+  .manas-rail-left {
+    left: 12px;
+  }
+  .manas-rail-right {
+    left: auto;
+    right: 12px;
+  }
+}
+
+/* Centered content column */
+.manas-column {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Dot grid band */
+.manas-dotgrid {
+  width: 100%;
+  background-image: radial-gradient(var(--manas-rails) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Dashed horizontal divider between sections */
+.manas-hdivider {
+  border-top: 1px dashed var(--manas-rails);
+  width: 100%;
+}
+
+/* Section title */
+.manas-section-title {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: var(--manas-text);
+}
+
+/* Rounded-lg button base */
+.manas-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--manas-border);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.manas-btn-dark {
+  background: #27272a;
+  color: #fafafa;
+  border-color: #27272a;
+  font-weight: 600;
+}
+.manas-btn-dark:hover {
+  background: #18181b;
+}
+.manas-btn-light {
+  background: var(--manas-bg);
+  color: var(--manas-text);
+}
+.manas-btn-light:hover {
+  background: var(--manas-border);
+}
+
+/* Social / skill pill */
+.manas-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--manas-border);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--manas-text);
+  background: var(--manas-bg);
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.manas-pill:hover {
+  background: var(--manas-border);
+}
+.manas-pill svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* OS dark-mode support (no manual toggle) */
+@media (prefers-color-scheme: dark) {
+  .manas-root:not([data-theme-override]) {
+    --manas-bg: #09090b;
+    --manas-text: #e4e4e7;
+    --manas-muted: #a1a1aa;
+    --manas-border: #27272a;
+    --manas-rails: #3f3f46;
+  }
+}
