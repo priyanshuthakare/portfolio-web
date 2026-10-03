@@ -13,23 +13,19 @@ export function Blogs() {
       <SectionDivider />
       <h2 className="manas-section-title mt-6 mb-6">Blogs</h2>
 
-      <div
-        className="rounded-lg p-4 flex items-start justify-between gap-4"
-        style={{ border: "1px solid var(--manas-border)" }}
-        onMouseEnter={playBlip}
-      >
+      <div className="flex items-start justify-between gap-4 py-2">
         <div>
-          <p className="font-bold text-sm" style={{ color: "var(--manas-text)" }}>
+          <p className="font-bold" style={{ fontSize: 18, color: "var(--manas-text)" }}>
             Coming soon
           </p>
           <p
-            className="inline-flex items-center gap-1 text-xs mt-1"
+            className="inline-flex items-center gap-1.5 text-sm mt-2"
             style={{ color: "var(--manas-muted)" }}
           >
-            <CalendarDays size={12} />
+            <CalendarDays size={14} />
             To be announced
           </p>
-          <div className="flex flex-wrap gap-2 mt-2">
+          <div className="flex flex-wrap gap-2 mt-3">
             {["Engineering", "AI", "Notes"].map((tag) => (
               <span key={tag} className="manas-pill !cursor-default">
                 {tag}
@@ -37,7 +33,7 @@ export function Blogs() {
             ))}
           </div>
         </div>
-        <ArrowUpRight size={16} className="shrink-0" style={{ color: "var(--manas-muted)" }} />
+        <ArrowUpRight size={18} className="shrink-0 mt-1" style={{ color: "var(--manas-muted)" }} />
       </div>
     </section>
   )
