@@ -1,12 +1,15 @@
 /* manasr.dev-style blueprint design system. Scoped under .manas-root. */
+/* Default (light) theme vars live on :root so the theme provider can override them. */
 
-.manas-root {
+:root {
   --manas-bg: #ffffff;
   --manas-text: #18181b;
   --manas-muted: #71717a;
   --manas-border: #e4e4e7;
   --manas-rails: #d4d4d8;
+}
 
+.manas-root {
   background: var(--manas-bg);
   color: var(--manas-text);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
@@ -137,13 +140,5 @@
   height: 14px;
 }
 
-/* OS dark-mode support (no manual toggle) — skipped when a creative theme is active */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme-override]) .manas-root {
-    --manas-bg: #09090b;
-    --manas-text: #e4e4e7;
-    --manas-muted: #a1a1aa;
-    --manas-border: #27272a;
-    --manas-rails: #3f3f46;
-  }
-}
+/* No OS dark-mode override — site defaults to light always.
+   Dark creative themes (midnight/violet/ember) are available via the paintbrush. */
