@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 
 import { PROJECTS } from "@/features/portfolio/data/projects"
 import { useManasTheme } from "./theme-provider"
