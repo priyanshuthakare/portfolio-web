@@ -102,7 +102,7 @@ export function ProjectDetail({ project }: { project: Project }) {
           className="manas-btn manas-btn-light"
           onMouseEnter={playBlip}
         >
-          <Icons.github width={16} height={16} />
+          <Icons.github className="size-4" />
           Github
         </a>
         <a
