@@ -9,6 +9,26 @@ import type { Experience } from "../types/experiences"
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "aethel-labs",
+    companyName: "Aethel Labs",
+    positions: [
+      {
+        id: "1",
+        title: "Founder, AI Automation Engineer",
+        employmentPeriod: {
+          start: "10.2025",
+        },
+        employmentType: "Full-time",
+        icon: <CodeXmlIcon />,
+        description:
+          "- Build and run production agentic automation for 6+ clients across SaaS, Web3 and e-commerce, using Python, n8n, webhooks and LLM reasoning with structured outputs.\n- Cut client manual operations by 40% by automating lead processing, onboarding and reporting; maintain deployments with logging and observability.\n- Apply LangChain, RAG and fine-tuning on live client work; document every workflow for handoff.",
+        skills: ["Python", "n8n", "LangChain", "RAG", "Automation"],
+        isExpanded: true,
+      },
+    ],
+    isCurrentEmployer: true,
+  },
+  {
     id: "ecell-prmitr",
     companyName: "Entrepreneurship Cell, PRMIT&R",
     companyWebsite: "https://www.prmitr.in",
@@ -22,12 +42,10 @@ export const EXPERIENCES: Experience[] = [
         employmentType: "Leadership",
         icon: <LightbulbIcon />,
         description:
-          "- Led a 45-member cross-functional team to execute entrepreneurship and tech programs for 500+ participants.\n- Mentored students in Python, AI workflows, and cloud tooling.\n- Secured top-25 position (out of 9,000 teams) at NEC'25, IIT Bombay.",
+          "- Lead a 45-member team and 8+ events a year; mentored 10+ students in Python, AI and cloud.\n- Secured top-25 position (out of 9,000 teams) at NEC'25, IIT Bombay.",
         skills: ["Leadership", "Mentoring", "Python", "AI", "Cloud"],
-        isExpanded: true,
       },
     ],
-    isCurrentEmployer: true,
   },
   {
     id: "growth-magnet",
@@ -39,12 +57,12 @@ export const EXPERIENCES: Experience[] = [
         title: "AI & Automation Intern",
         employmentPeriod: {
           start: "12.2024",
-          end: "02.2025",
+          end: "05.2025",
         },
         employmentType: "Internship",
         icon: <CodeXmlIcon />,
         description:
-          "- Built and deployed AI-led automation workflows using n8n for multiple client pipelines.\n- Improved lead generation and onboarding throughput through process automation.\n- Delivered measurable operational efficiency gains with end-to-end workflow redesign.",
+          "- Shipped 8+ Python and n8n workflows for lead generation, CRM enrichment and onboarding, with LLM-based classification.\n- Cut onboarding time and manual workload by 35%.",
         skills: ["n8n", "Automation", "AI Workflows", "Integrations"],
       },
     ],
@@ -57,13 +75,13 @@ export const EXPERIENCES: Experience[] = [
         id: "1",
         title: "Business Analyst Intern",
         employmentPeriod: {
-          start: "10.2024",
+          start: "11.2024",
           end: "12.2024",
         },
         employmentType: "Internship",
         icon: <BriefcaseBusinessIcon />,
         description:
-          "- Supported prospect pipeline development and client acquisition strategy.\n- Conducted lead research, qualification, and market-opportunity analysis.\n- Collaborated with cross-functional teams to prioritize growth initiatives.",
+          "- Built a qualified database of 50+ prospects at a 12% conversion rate and used acquisition data to shape outreach strategy.",
         skills: ["Research", "Analysis", "Client Acquisition"],
       },
     ],
@@ -76,14 +94,14 @@ export const EXPERIENCES: Experience[] = [
       {
         id: "1",
         title:
-          "B.Tech in Electronics & Telecommunication Engineering — PRMIT&R",
+          "B.Tech, Electronics and Telecommunication (Minor: Computer Science) — PRMIT&R, SGBAU",
         employmentPeriod: {
-          start: "2021",
+          start: "2023",
+          end: "2027",
         },
         icon: <GraduationCapIcon />,
-        description:
-          "Focused on software engineering, full-stack product development, and IoT-integrated systems.",
-        skills: ["Electronics", "IoT", "Software Engineering"],
+        description: "Expected 2027.",
+        skills: ["Electronics", "Computer Science", "IoT"],
       },
     ],
   },

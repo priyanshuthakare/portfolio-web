@@ -4,7 +4,6 @@ import { Hero } from "./hero"
 import { Projects } from "./projects"
 import { Experiences } from "./experiences"
 import { Skills } from "./skills"
-import { Blogs } from "./blogs"
 import { Quote } from "./quote"
 import { SoundToggle } from "./sound-toggle"
 
@@ -17,7 +16,6 @@ export function ManasPage() {
         <Projects />
         <Experiences />
         <Skills />
-        <Blogs />
         <Quote />
       </ManasLayout>
       <SoundToggle />

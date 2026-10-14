@@ -7,19 +7,25 @@ export const USER: User = {
   username: "priyanshuthakare",
   gender: "male",
   pronouns: "he/him",
-  bio: "Full-stack developer building high-performance web apps, AI workflows, and blockchain products.",
+  bio: "Product-minded full-stack engineer who ships. Built BellWize, a live B2B churn-prevention SaaS, plus a live Android app and AI automation systems running in production for paying clients.",
   flipSentences: [
-    "Full-Stack Developer & AI Engineer",
-    "Building production-ready products.",
+    "Founder & Full-Stack AI Engineer",
+    "Shipping production-ready products.",
     "Open for freelance and full-time roles.",
   ],
-  address: "Pune, India",
+  address: "Maharashtra, India",
   phoneNumberB64: "KzkxOTY5OTA3NTcxOA==",
-  emailB64: "cHJpeWFuc2h1dGhha2FyZUB6b2hvbWFpbC5pbg==",
+  emailB64: "cHJpeWFuc2h1dGhha2FyZTE0QGdtYWlsLmNvbQ==",
   website: "https://0xpriyanshu.me",
   bookingUrl: "https://cal.com/priyanshuthakare",
-  jobTitle: "Full-Stack Developer & AI Engineer",
+  jobTitle: "Founder, AI Automation Engineer",
   jobs: [
+    {
+      title: "Founder, AI Automation Engineer",
+      company: "Aethel Labs",
+      website: "https://0xpriyanshu.me",
+      experienceId: "aethel-labs",
+    },
     {
       title: "Vice President",
       company: "Entrepreneurship Cell, PRMIT&R",
@@ -34,7 +40,7 @@ export const USER: User = {
     },
   ],
   about:
-    "I’m Priyanshu Thakare, a full-stack developer and AI engineer focused on shipping production web products that are fast, dependable, and maintainable under real usage. I work across React, Next.js, Node.js, Python, and modern cloud tooling, with hands-on delivery experience in AI automations, real-time systems, and blockchain-backed workflows. Recent projects like Ayurchain, Stability OS, Appointment System, and DealDoc.ai reflect how I build: clear architecture, measurable outcomes, and execution that holds up in production.",
+    "I'm Priyanshu Thakare, a product-minded full-stack engineer who ships. I built BellWize, a live B2B SaaS that predicts client churn for agencies, plus a live Android app and AI automation systems running in production for paying clients. Top-25 finalist of 9,000+ teams at IIT Bombay's NEC 2025. I take ambiguous problems from idea to deployed product on my own: schema, API, integrations, payments, auth, and monitoring.",
   avatar: "https://github.com/priyanshuthakare.png",
   avatarVariants: {
     lightOff: "https://github.com/priyanshuthakare.png",
