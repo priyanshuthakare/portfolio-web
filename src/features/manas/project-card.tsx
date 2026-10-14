@@ -7,9 +7,11 @@ import type { Project } from "@/features/portfolio/types/projects"
 import { useManasTheme } from "./theme-provider"
 
 const CAPTIONS: Record<string, string> = {
+  bellwize: "churn shield",
   ayurchain: "qr verification",
-  "stability-os": "dashboard",
-  "appointment-system": "live demo",
+  "stability-os": "3d brain heatmap",
+  threepod: "procedural 3d",
+  "grub-boot-loader-theme-windows": "grub2win",
 }
 
 export function ProjectCard({ project }: { project: Project }) {

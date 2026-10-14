@@ -17,14 +17,14 @@ export function Quote() {
           className="text-center mx-auto font-bold italic tracking-tight"
           style={{ fontSize: 30, color: "#3f3f46", maxWidth: 600, lineHeight: 1.4 }}
         >
-          &ldquo;The first Principle is that you must not fool your self -- and you are the easiest
+          &ldquo;The first principle is that you must not fool yourself &mdash; and you are the easiest
           person to fool&rdquo;
         </blockquote>
         <h2
           className="text-center mt-6"
           style={{ fontSize: 17, color: "var(--manas-muted)", fontFamily: "cursive" }}
         >
-          -- Richard Feyman --
+          -- Richard Feynman --
         </h2>
       </div>
 

@@ -31,18 +31,6 @@ export const TECH_STACK: TechStack[] = [
     ),
     categories: ["Languages"],
   },
-  // {
-  //   key: "php",
-  //   title: "PHP",
-  //   href: "https://www.php.net",
-  //   categories: ["Languages"],
-  // },
-  // {
-  //   key: "java",
-  //   title: "Java",
-  //   href: "https://www.java.com",
-  //   categories: ["Languages"],
-  // },
   {
     key: "react",
     title: "React",
@@ -176,12 +164,6 @@ export const TECH_STACK: TechStack[] = [
     ),
     categories: ["Frontend"],
   },
-  // {
-  //   key: "react-navigation",
-  //   title: "React Navigation",
-  //   href: "https://reactnavigation.org",
-  //   categories: ["Frontend"],
-  // },
   {
     key: "nodejs",
     title: "Node.js",
@@ -203,12 +185,6 @@ export const TECH_STACK: TechStack[] = [
     icon: <Icons.bun />,
     categories: ["Backend & Database"],
   },
-  // {
-  //   key: "laravel",
-  //   title: "Laravel",
-  //   href: "https://laravel.com",
-  //   categories: ["Backend & Database"],
-  // },
   {
     key: "postgresql",
     title: "PostgreSQL",
@@ -223,12 +199,6 @@ export const TECH_STACK: TechStack[] = [
     ),
     categories: ["Backend & Database"],
   },
-  // {
-  //   key: "mysql",
-  //   title: "MySQL",
-  //   href: "https://www.mysql.com",
-  //   categories: ["Backend & Database"],
-  // },
   {
     key: "mongodb",
     title: "MongoDB",
