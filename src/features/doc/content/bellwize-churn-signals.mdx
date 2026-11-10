@@ -1,0 +1,60 @@
+---
+title: "What shipping BellWize solo taught me about churn signals"
+description: "Notes from building a churn-prevention SaaS end to end: schema, auth, scoring, alerting, and the parts nobody demos."
+createdAt: "2026-11-10"
+updatedAt: "2026-11-10"
+new: true
+---
+
+Most churn tools start with a dashboard. BellWize started with a simpler question: which client needs attention before they tell us?
+
+I built BellWize solo, from the database schema and REST API to authentication, billing, email, and deployment. The product turns client activity into a health score, then surfaces the accounts that are drifting before renewal conversations happen. This post is about the decisions that mattered, not the launch announcement.
+
+## A dashboard is a lagging indicator
+
+A dashboard tells you what already happened. By the time a customer stops logging in, the useful intervention window is usually gone.
+
+The interesting signal is rarely a single event. It is the shape of activity over time: a slow decline in sessions, a support thread that stays open, an invite that never gets accepted, a key feature that stops being used after onboarding. One metric is noise. Several metrics moving in the same direction is a story.
+
+That framing shaped the data model. Instead of storing a single "health" number, BellWize keeps the underlying signals and computes scores from them. When a score changes, the system can explain which inputs moved.
+
+## The pipeline: ingestion, extraction, scoring, alerting
+
+The core is a four-stage pipeline:
+
+1. **Ingestion** pulls client signals into a normalized event store.
+2. **Feature extraction** turns raw events into per-account features over rolling windows.
+3. **Scoring** combines those features into a health score and a risk band.
+4. **Alerting** decides which changes are worth interrupting someone for.
+
+The fourth stage is the one people underestimate. A system that alerts on every score change trains users to ignore it. The useful version alerts on meaningful transitions: an account crossing into a risk band, a sustained decline, or a high-value client losing a critical feature.
+
+## Auth and tenancy are product features
+
+Multi-tenant SaaS lives or dies on isolation. BellWize uses PostgreSQL row-level security so access rules live next to the data instead of being reimplemented in every endpoint.
+
+Authentication supports both Google OAuth and magic links. That sounds like a small detail until you watch a B2B buyer try to onboard a teammate. Passwordless flows reduce friction, but they also make email deliverability part of your login path. If your transactional email is broken, your auth is broken.
+
+## Deliverability is infrastructure, not a checkbox
+
+I configured custom-domain email with SPF, DKIM, and DMARC, and sent transactional alerts through Resend. This is the unglamorous work that determines whether the product feels reliable.
+
+A churn alert that lands in spam is worse than no alert, because the user believes the system is watching and it is not. Monitoring delivery, bounce handling, and domain reputation belongs in the same category as uptime.
+
+## Billing and deployment
+
+Payments run through Paddle, which handles tax and subscription management so the product does not need to. Deployment is on Vercel, with preview environments for changes and production kept boring on purpose.
+
+The lesson is not "use these specific tools." It is that a solo founder should spend originality on the product surface and buy or automate everything that is undifferentiated.
+
+## What I would change
+
+If I rebuilt BellWize today, I would make three changes:
+
+- **Start with alert quality, not score accuracy.** A slightly noisy score with excellent alerts beats a precise score nobody acts on.
+- **Instrument the intervention loop.** It is not enough to know a score dropped; the product should learn whether the resulting action helped.
+- **Write the operational runbooks earlier.** Email deliverability, backups, and incident response are easier to document before launch than after.
+
+## Closing
+
+Churn prevention is a timing problem. The product is valuable when it shortens the distance between a signal appearing and a human acting on it. Everything else, including the dashboard, is supporting cast.

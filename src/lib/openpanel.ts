@@ -1,8 +1,16 @@
 import { OpenPanel } from "@openpanel/web"
 
-export const op = new OpenPanel({
-  clientId: process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID!,
-  trackScreenViews: true,
-  trackOutgoingLinks: true,
-  trackAttributes: true,
-})
+const clientId = process.env.NEXT_PUBLIC_OPENPANEL_CLIENT_ID
+
+/**
+ * OpenPanel is optional in local and preview environments. Keeping the client
+ * null when the ID is missing avoids failed /track requests on every page.
+ */
+export const op = clientId
+  ? new OpenPanel({
+      clientId,
+      trackScreenViews: true,
+      trackOutgoingLinks: true,
+      trackAttributes: true,
+    })
+  : null

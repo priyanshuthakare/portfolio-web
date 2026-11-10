@@ -8,6 +8,9 @@ export const PROJECTS: Project[] = [
       start: "08.2025",
     },
     link: "https://bellwize.app",
+    image: "/projects/bellwize.png",
+    imagePosition: "center 46%",
+    liveUrl: "https://bellwize.app",
     summary:
       "Client retention and churn-prevention SaaS that turns 100+ signals into health scores.",
     status: "Live",
@@ -23,6 +26,9 @@ export const PROJECTS: Project[] = [
       start: "01.2025",
     },
     link: "https://ayurchain-beta.vercel.app/",
+    image: "/projects/ayurchain.png",
+    imagePosition: "center 48%",
+    liveUrl: "https://ayurchain-beta.vercel.app/",
     summary:
       "Privacy-preserving supply chain on Polygon. NEC 2025 finalist, rank 25 of 9,000+ teams.",
     status: "Beta",
@@ -34,9 +40,11 @@ export const PROJECTS: Project[] = [
     id: "stability-os",
     title: "Stability OS",
     period: {
-      start: "12.2024",
+      start: "03.2026",
     },
     link: "https://github.com/priyanshuthakare/System-OS",
+    repository: "https://github.com/priyanshuthakare/System-OS",
+    image: "/projects/stability-os.png",
     summary:
       "Behavioral regulation Android app (live) with a custom 3D brain heatmap.",
     status: "Live",
@@ -48,9 +56,11 @@ export const PROJECTS: Project[] = [
     id: "threepod",
     title: "Threepod",
     period: {
-      start: "01.2026",
+      start: "10.2026",
     },
     link: "https://github.com/ThreeDpod/ThreeDpod",
+    repository: "https://github.com/ThreeDpod/ThreeDpod",
+    image: "/projects/threepod.png",
     summary: "AI-native procedural 3D workspace. Pitched at Aavishkar 2026.",
     status: "Prototype",
     skills: ["React", "Three.js", "AI", "TypeScript"],
@@ -61,11 +71,14 @@ export const PROJECTS: Project[] = [
     id: "grub-boot-loader-theme-windows",
     title: "Grub Boot Loader Theme Windows",
     period: {
-      start: "06.2024",
+      start: "10.2026",
     },
     link: "https://github.com/priyanshuthakare/Grub-Boot-Loader-Theme-Windows",
+    repository:
+      "https://github.com/priyanshuthakare/Grub-Boot-Loader-Theme-Windows",
+    image: "/projects/grub.png",
     summary: "Open-source GRUB theme extended with Windows (Grub2Win) support.",
-    status: "Live",
+    status: "Open Source",
     skills: ["GRUB", "Windows", "Open Source"],
     description:
       "Extended an open-source Minecraft GRUB theme with Windows (Grub2Win) support, scheduled-task automation and widescreen fixes.\n\nCovers install automation plus resolution fixes so the theme renders correctly on widescreen displays.",

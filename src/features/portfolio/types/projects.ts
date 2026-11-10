@@ -12,12 +12,22 @@ export type Project = {
     /** End date; leave undefined for "Present". */
     end?: string
   }
-  /** Public URL (site, repository, demo, or video). */
+  /** Primary public URL (site, repository, demo, or video). */
   link: string
+  /** Preview image path under /public. */
+  image?: string
+  /** CSS object-position used to crop the preview image. */
+  imagePosition?: string
+  /** Optional repository URL when the primary link is not the repository. */
+  repository?: string
+  /** Optional live/demo URL when the primary link is the repository. */
+  liveUrl?: string
+  /** Optional write-up URL. */
+  postUrl?: string
   /** At-a-glance one-line project pitch shown in collapsed list. */
   summary: string
   /** Short status label for the project. */
-  status?: "Live" | "Beta" | "Prototype"
+  status?: "Live" | "Beta" | "Prototype" | "Open Source"
   /** Tags/technologies for chips or filtering. */
   skills: string[]
   /** Optional rich description; Markdown and line breaks supported. */

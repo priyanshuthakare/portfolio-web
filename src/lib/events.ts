@@ -40,9 +40,10 @@ export type Event = z.infer<typeof eventSchema>
 
 export function trackEvent(input: Event) {
   const event = eventSchema.parse(input)
-  if (event) {
-    console.log("trackEvent:", event)
+
+  if (process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN) {
     posthog.capture(event.name, event.properties)
-    op.track(event.name, event.properties)
   }
+
+  op?.track(event.name, event.properties)
 }

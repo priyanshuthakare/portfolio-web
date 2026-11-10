@@ -60,7 +60,21 @@
   z-index: 2;
   max-width: 640px;
   margin: 0 auto;
-  padding: 0 16px;
+  /* Keep the fixed sound toggle from covering the last lines on small screens. */
+  padding: 0 16px 72px;
+}
+
+/* Wider reading column on large screens, with rails kept in sync. */
+@media (min-width: 1024px) {
+  .manas-column {
+    max-width: 720px;
+  }
+  .manas-rail-left {
+    left: calc(50% - 360px - 48px);
+  }
+  .manas-rail-right {
+    left: calc(50% + 360px + 48px);
+  }
 }
 
 /* Dot grid band */

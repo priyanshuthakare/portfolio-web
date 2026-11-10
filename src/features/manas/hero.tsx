@@ -1,12 +1,14 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Link from "next/link"
 import { Brush, CalendarDays, Mail, RotateCcw } from "lucide-react"
 
 import { USER } from "@/features/portfolio/data/user"
-import { useManasTheme } from "./theme-provider"
-import { DotGrid } from "./manas-layout"
+
 import { GithubHeatmap } from "./github-heatmap"
+import { DotGrid } from "./manas-layout"
+import { useManasTheme } from "./theme-provider"
 
 const ROLES = [
   "Founder, AI Automation Engineer",
@@ -34,7 +36,12 @@ function useScrambleRole(roles: string[]) {
         const revealCount = Math.floor(progress * target.length)
         let out = target.slice(0, revealCount)
         for (let i = revealCount; i < target.length; i++) {
-          out += target[i] === " " ? " " : SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)]
+          out +=
+            target[i] === " "
+              ? " "
+              : SCRAMBLE_CHARS[
+                  Math.floor(Math.random() * SCRAMBLE_CHARS.length)
+                ]
         }
         setDisplay(out)
         if (progress < 1) {
@@ -70,7 +77,10 @@ function bioParagraphs(): string[] {
   const per = Math.ceil(sentences.length / 3)
   const paras: string[] = []
   for (let i = 0; i < 3; i++) {
-    const chunk = sentences.slice(i * per, (i + 1) * per).join(" ").trim()
+    const chunk = sentences
+      .slice(i * per, (i + 1) * per)
+      .join(" ")
+      .trim()
     if (chunk) paras.push(chunk)
   }
   return paras
@@ -122,73 +132,113 @@ export function Hero() {
 
   return (
     <section>
-      <DotGrid className="h-[120px]" />
+      <DotGrid className="h-[72px] sm:h-[120px]" />
 
-      {/* Paintbrush + reset row */}
-      <div className="flex justify-end items-center gap-2 pt-4">
-        {themeId !== "default" && (
+      {/* Site nav + theme controls */}
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-4">
+        <nav
+          aria-label="Site"
+          className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs"
+        >
+          {(
+            [
+              { href: "/blog", label: "Blog" },
+              { href: "/sponsors", label: "Sponsors" },
+              { href: "/testimonials", label: "Testimonials" },
+            ] as const
+          ).map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="underline-offset-2 hover:underline"
+              style={{ color: "var(--manas-muted)" }}
+              onMouseEnter={playBlip}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="flex items-center gap-2">
+          {themeId !== "default" && (
+            <button
+              type="button"
+              onClick={() => {
+                resetTheme()
+                playBlip()
+              }}
+              onMouseEnter={playBlip}
+              className="manas-pill"
+              aria-label="Reset theme"
+            >
+              <RotateCcw size={14} />
+              Reset
+            </button>
+          )}
           <button
             type="button"
             onClick={() => {
-              resetTheme()
+              cycleTheme()
               playBlip()
             }}
             onMouseEnter={playBlip}
-            className="manas-pill"
-            aria-label="Reset theme"
+            className="manas-btn manas-btn-light !rounded-lg"
+            style={{
+              width: 44,
+              height: 44,
+              padding: 0,
+              justifyContent: "center",
+            }}
+            aria-label="Cycle creative theme"
+            title="Cycle creative theme"
           >
-            <RotateCcw size={14} />
-            Reset
+            <Brush size={18} />
           </button>
-        )}
-        <button
-          type="button"
-          onClick={() => {
-            cycleTheme()
-            playBlip()
-          }}
-          onMouseEnter={playBlip}
-          className="manas-btn manas-btn-light !rounded-lg"
-          style={{ width: 44, height: 44, padding: 0, justifyContent: "center" }}
-          aria-label="Cycle creative theme"
-          title="Cycle creative theme"
-        >
-          <Brush size={18} />
-        </button>
+        </div>
       </div>
 
       {/* Avatar + name + role */}
-      <div className="flex items-start gap-4 mt-4">
+      <div className="mt-4 flex items-start gap-4">
         <img
           src={USER.avatar}
           alt={USER.displayName}
           width={95}
           height={95}
-          className="rounded-lg shrink-0"
-          style={{ border: "4px solid #fff", boxShadow: "0 4px 16px rgba(0,0,0,0.15)" }}
+          className="shrink-0 rounded-lg"
+          style={{
+            border: "4px solid #fff",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.15)",
+          }}
         />
         <div className="min-w-0">
           <h1
-            className="font-bold leading-tight text-2xl sm:text-[40px]"
+            className="text-2xl leading-tight font-bold sm:text-[40px]"
             style={{ letterSpacing: "-0.02em", color: "var(--manas-text)" }}
           >
             {USER.displayName}
           </h1>
-          <p className="text-sm mt-1" style={{ color: "var(--manas-muted)" }} aria-live="polite">
+          <p
+            className="mt-1 text-sm"
+            style={{ color: "var(--manas-muted)" }}
+            aria-live="polite"
+          >
             {role}
           </p>
         </div>
       </div>
 
       {/* Bio */}
-      <div className="mt-4 space-y-4 text-sm" style={{ color: "var(--manas-text)" }}>
+      <div
+        className="mt-4 space-y-4 text-[15px]"
+        style={{ color: "var(--manas-text)" }}
+      >
         {paras.map((p, i) => (
           <p key={i}>{p}</p>
         ))}
       </div>
 
       {/* CTA buttons */}
-      <div className="flex flex-wrap gap-3 mt-6">
+      <div className="mt-6 flex flex-wrap gap-3">
         <a
           href={USER.bookingUrl}
           target="_blank"
@@ -199,7 +249,11 @@ export function Hero() {
           <CalendarDays size={16} />
           Book a call
         </a>
-        <a href={`mailto:${email}`} className="manas-btn manas-btn-light" onMouseEnter={playBlip}>
+        <a
+          href={`mailto:${email}`}
+          className="manas-btn manas-btn-light"
+          onMouseEnter={playBlip}
+        >
           <Mail size={16} />
           Send an email
         </a>
@@ -207,9 +261,10 @@ export function Hero() {
 
       {/* Socials */}
       <p className="mt-6 text-sm" style={{ color: "var(--manas-muted)" }}>
-        Here are my <strong style={{ color: "var(--manas-text)" }}>socials</strong>
+        Here are my{" "}
+        <strong style={{ color: "var(--manas-text)" }}>socials</strong>
       </p>
-      <div className="flex flex-wrap gap-2 mt-2">
+      <div className="mt-2 flex flex-wrap gap-2">
         {socials.map((s) => (
           <a
             key={s.label}

@@ -3,12 +3,26 @@
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
 
-import { EXPERIENCES } from "@/features/portfolio/data/experiences"
-import { useManasTheme } from "./theme-provider"
-import { SectionDivider } from "./manas-layout"
 import { cn } from "@/lib/utils"
+import { EXPERIENCES } from "@/features/portfolio/data/experiences"
 
-const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"]
+import { SectionDivider } from "./manas-layout"
+import { useManasTheme } from "./theme-provider"
+
+const MONTH_NAMES = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+]
 
 function formatDate(raw: string): string {
   // "MM.YYYY" -> "Mon, YYYY"; "YYYY" -> "YYYY"
@@ -62,7 +76,10 @@ export function Experiences() {
             <div
               key={exp.id}
               className="rounded-lg p-4"
-              style={{ background: "color-mix(in srgb, var(--manas-border) 45%, transparent)" }}
+              style={{
+                background:
+                  "color-mix(in srgb, var(--manas-border) 45%, transparent)",
+              }}
             >
               <button
                 type="button"
@@ -71,12 +88,12 @@ export function Experiences() {
                   playBlip()
                 }}
                 onMouseEnter={playBlip}
-                className="w-full flex items-start gap-3 text-left"
+                className="flex w-full items-start gap-3 text-left"
                 aria-expanded={isOpen}
               >
                 {/* Initials logo */}
                 <span
-                  className="rounded-md shrink-0 flex items-center justify-center font-bold text-sm"
+                  className="flex shrink-0 items-center justify-center rounded-md text-sm font-bold"
                   style={{
                     width: 40,
                     height: 40,
@@ -88,14 +105,17 @@ export function Experiences() {
                   {initials(exp.companyName)}
                 </span>
 
-                <span className="flex-1 min-w-0">
-                  <span className="flex items-center gap-2 flex-wrap">
-                    <span className="font-bold text-sm" style={{ color: "var(--manas-text)" }}>
+                <span className="min-w-0 flex-1">
+                  <span className="flex flex-wrap items-center gap-2">
+                    <span
+                      className="text-sm font-bold"
+                      style={{ color: "var(--manas-text)" }}
+                    >
                       {exp.companyName}
                     </span>
                     {pos.employmentType && (
                       <span
-                        className="hidden sm:inline-block text-[11px] px-2 py-0.5 rounded-full"
+                        className="hidden rounded-full px-2 py-0.5 text-[11px] sm:inline-block"
                         style={{
                           border: "1px solid var(--manas-border)",
                           color: "var(--manas-muted)",
@@ -105,25 +125,40 @@ export function Experiences() {
                       </span>
                     )}
                   </span>
-                  <span className="block text-[13px] mt-0.5" style={{ color: "var(--manas-muted)" }}>
+                  <span
+                    className="mt-0.5 block text-[13px]"
+                    style={{ color: "var(--manas-muted)" }}
+                  >
                     {pos.title}
                   </span>
                 </span>
 
-                <span className="text-right shrink-0 max-w-[8.75rem]">
-                  <span className="block text-[13px]" style={{ color: "var(--manas-muted)" }}>
-                    {formatPeriod(pos.employmentPeriod.start, pos.employmentPeriod.end)}
+                <span className="max-w-[8.75rem] shrink-0 text-right">
+                  <span
+                    className="block text-[13px]"
+                    style={{ color: "var(--manas-muted)" }}
+                  >
+                    {formatPeriod(
+                      pos.employmentPeriod.start,
+                      pos.employmentPeriod.end
+                    )}
                   </span>
                   <ChevronDown
                     size={16}
-                    className={cn("hidden sm:block ml-auto mt-1 transition-transform", isOpen && "rotate-180")}
+                    className={cn(
+                      "mt-1 ml-auto transition-transform",
+                      isOpen && "rotate-180"
+                    )}
                     style={{ color: "var(--manas-muted)" }}
                   />
                 </span>
               </button>
 
               {isOpen && (
-                <ul className="hidden sm:block mt-3 ml-[52px] space-y-1.5 text-sm list-disc pl-4" style={{ color: "var(--manas-text)" }}>
+                <ul
+                  className="mt-3 ml-[52px] list-disc space-y-1.5 pl-4 text-[15px]"
+                  style={{ color: "var(--manas-text)" }}
+                >
                   {bullets(pos.description).map((b, i) => (
                     <li key={i}>{b}</li>
                   ))}
